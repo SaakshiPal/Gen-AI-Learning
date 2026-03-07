@@ -1,0 +1,584 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 1 – Day 1 Python Setup, Input/Output, Variables & Keywords
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 What is Data Science?
+
+**Data Science** is a field that combines:
+
+* Statistics
+* Programming
+* Machine Learning
+* Data Analysis
+
+to **extract useful insights from data**.
+
+It helps organizations make **data-driven decisions**.
+
+📌 Real World Applications
+
+* Netflix movie recommendations
+* Amazon product suggestions
+* Fraud detection in banks
+* Medical diagnosis
+* Self-driving cars
+* Chatbots & AI assistants
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💼 Common Data Science Roles
+
+* Data Scientist
+* Machine Learning Engineer
+* Data Analyst
+* AI Engineer
+* Data Engineer
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🛠 Languages Used in Data Science
+
+Most common:
+
+* **Python** 🐍
+* **R**
+
+Python is widely used because it has powerful libraries like:
+
+* NumPy
+* Pandas
+* Matplotlib
+* Scikit-learn
+* TensorFlow
+* PyTorch
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🐍 Getting Started with Python
+
+Python is a **high-level, interpreted programming language** known for:
+
+* Simple syntax
+* Easy readability
+* Large community
+* Huge ecosystem of libraries
+
+It is widely used in:
+
+* AI
+* Machine Learning
+* Data Science
+* Web Development
+* Automation
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Python Installation
+
+Step 1
+
+Go to the official website:
+
+```
+https://www.python.org
+```
+
+Step 2
+
+Download the latest version.
+
+Step 3
+
+Run the installer.
+
+⚠️ Important: Enable
+
+```
+Add Python to PATH
+```
+
+Then click **Install Now**.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ Verify Installation
+
+Open terminal / command prompt:
+
+```bash
+python --version
+```
+
+Example output:
+
+```
+Python 3.11.5
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💻 Running Your First Python Program
+
+Example:
+
+```python
+print("Hello World")
+```
+
+Output:
+
+```
+Hello World
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧪 Python Interactive Shell
+
+Start Python shell:
+
+```bash
+python
+```
+
+Then run:
+
+```python
+print("Hello World")
+```
+
+Exit shell:
+
+```python
+exit()
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+☁️ Alternative Coding Environment
+
+You can also use cloud platforms like:
+
+Google Colab
+
+Advantages:
+
+* No installation required
+* Runs in browser
+* Free GPU support
+* Easy notebook environment
+
+Link:
+
+```
+https://colab.research.google.com
+```
+
+---
+
+🔹 Python Input and Output
+
+Python programs interact with users using:
+
+* `print()` → Output
+* `input()` → User input
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📤 Output in Python
+
+The `print()` function displays output.
+
+Example:
+
+```python
+print("Hello World")
+```
+
+Output:
+
+```
+Hello World
+```
+
+---
+
+Printing Variables
+
+```python
+name = "Saakshi"
+print("Hello", name)
+```
+
+Output:
+
+```
+Hello Saakshi
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📥 Input in Python
+
+The `input()` function takes user input.
+
+Example:
+
+```python
+name = input("Enter your name: ")
+print("Welcome", name)
+```
+
+Output:
+
+```
+Enter your name: Saakshi
+Welcome Saakshi
+```
+
+⚠️ Important:
+
+```
+input() always returns STRING by default
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔢 Typecasting Input
+
+To convert input to numbers:
+
+#Integer Input
+
+```python
+age = int(input("Enter age: "))
+```
+
+Float Input
+
+```python
+price = float(input("Enter price: "))
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Multiple Inputs
+
+Use `split()` to take multiple values.
+
+Example:
+
+```python
+x, y = input("Enter two numbers: ").split()
+```
+
+Convert to integers:
+
+```python
+x, y = map(int, input("Enter numbers: ").split())
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔍 Checking Data Types
+
+Python provides `type()` function.
+
+Example:
+
+```python
+x = 10
+print(type(x))
+```
+
+Output:
+
+```
+<class 'int'>
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 Python Variables
+
+Variables store data values.
+
+Example:
+
+```python
+name = "Saakshi"
+age = 22
+salary = 50000
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📌 Rules for Variable Names
+
+✔ Must start with a letter or underscore
+✔ Cannot start with a number
+✔ Cannot contain spaces
+✔ Cannot be Python keywords
+
+---
+
+✅ Valid Variables
+
+```python
+age = 21
+_total = 100
+user_name = "Saakshi"
+```
+
+---
+
+❌ Invalid Variables
+
+```python
+1name = "John"
+class = 10
+user-name = "Sam"
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ Dynamic Typing in Python
+
+Python allows changing variable types.
+
+Example:
+
+```python
+x = 10
+x = "Hello"
+```
+
+This is called **Dynamic Typing**.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Multiple Variable Assignment
+
+Assign same value:
+
+```python
+a = b = c = 100
+```
+
+Assign different values:
+
+```python
+x, y, z = 1, 2.5, "Python"
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Swapping Variables
+
+Python can swap values easily.
+
+```python
+a, b = 10, 20
+a, b = b, a
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Memory Reference
+
+Example:
+
+```python
+x = 10
+y = x
+```
+
+Both variables refer to **same memory location**.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🗑 Deleting Variables
+
+Use `del` keyword.
+
+```python
+x = 10
+del x
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔑 Python Keywords
+
+Keywords are **reserved words** in Python.
+
+They define **syntax and structure of the language**.
+
+⚠️ Keywords **cannot be used as variable names**.
+
+Example (invalid):
+
+```python
+for = 10
+```
+
+This will cause a **SyntaxError**.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📋 List Python Keywords
+
+```python
+import keyword
+print(keyword.kwlist)
+```
+
+Example output:
+
+```
+['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class']
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🗂 Categories of Python Keywords
+
+Value Keywords
+
+```
+True
+False
+None
+```
+
+---
+
+Logical Operators
+
+```
+and
+or
+not
+is
+in
+```
+
+---
+
+Control Flow
+
+```
+if
+else
+elif
+for
+while
+break
+continue
+pass
+```
+
+---
+
+Function and Class
+
+```
+def
+return
+class
+lambda
+yield
+```
+
+---
+
+Exception Handling
+
+```
+try
+except
+finally
+raise
+assert
+```
+
+---
+
+Import Keywords
+
+```
+import
+from
+as
+```
+
+---
+
+Scope Keywords
+
+```
+global
+nonlocal
+```
+
+---
+
+sync Programming
+
+```
+async
+await
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Keywords vs Identifiers
+
+Keywords
+
+* Reserved words
+* Predefined meaning
+* Cannot be modified
+
+Example:
+
+```
+if
+else
+for
+while
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Identifiers
+
+User-defined names for:
+
+* Variables
+* Functions
+* Classes
+
+Example:
+
+```
+name
+age
+salary
+total_sum
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✅ Data Science extracts insights from data
+✅ Python is widely used in AI & Data Science
+✅ `print()` is used for output
+✅ `input()` is used for user input
+✅ Variables store values
+✅ Python supports dynamic typing
+✅ Keywords are reserved words and cannot be used as variable names
+
