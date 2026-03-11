@@ -1,0 +1,359 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 1 – Day 4 Collections, Comprehensions & OOPs in Python
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 1. Collections in Python
+
+Python provides a **Collections module** that offers specialized container data types.
+
+It is part of the **collections library**.
+
+```python
+import collections
+```
+
+Common collections include:
+
+* Counter
+* defaultdict
+* namedtuple
+* deque
+* OrderedDict
+
+These structures help handle **data more efficiently than basic lists or dictionaries**.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Counter
+
+Counter is used to **count the frequency of elements** in a list or string.
+
+### Example
+
+```python
+from collections import Counter
+
+data = [1,2,2,3,3,3,4]
+
+count = Counter(data)
+
+print(count)
+```
+
+Output
+
+```
+Counter({3: 3, 2: 2, 1: 1, 4: 1})
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 defaultdict
+
+A dictionary that **automatically assigns a default value** if the key does not exist.
+
+Example
+
+```python
+from collections import defaultdict
+
+d = defaultdict(int)
+
+d["a"] += 1
+
+print(d)
+```
+
+Output
+
+```
+{'a': 1}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 namedtuple
+
+Creates **tuple-like objects with named fields**.
+
+Example
+
+```python
+from collections import namedtuple
+
+Student = namedtuple("Student", ["name","age"])
+
+s = Student("Saakshi",22)
+
+print(s.name)
+print(s.age)
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 deque
+
+Double-ended queue that allows **fast insertion and deletion**.
+
+Example
+
+```python
+from collections import deque
+
+dq = deque([1,2,3])
+
+dq.append(4)
+dq.appendleft(0)
+
+print(dq)
+```
+
+Output
+
+```
+deque([0,1,2,3,4])
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 OrderedDict
+
+Maintains **insertion order of dictionary elements**.
+
+```python
+from collections import OrderedDict
+
+od = OrderedDict()
+
+od["a"] = 1
+od["b"] = 2
+
+print(od)
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ 2. Comprehensions in Python
+
+Comprehensions provide a **short and readable way to create collections**.
+
+Types of comprehensions:
+
+* List Comprehension
+* Dictionary Comprehension
+* Set Comprehension
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 List Comprehension
+
+Creates lists in a single line.
+
+### Syntax
+
+```python
+[expression for item in iterable]
+```
+
+Example
+
+```python
+numbers = [x for x in range(5)]
+
+print(numbers)
+```
+
+Output
+
+```
+[0,1,2,3,4]
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+List Comprehension with Condition
+
+```python
+even = [x for x in range(10) if x % 2 == 0]
+
+print(even)
+```
+
+Output
+
+```
+[0,2,4,6,8]
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Dictionary Comprehension
+
+Creates dictionaries quickly.
+
+Example
+
+```python
+squares = {x: x*x for x in range(5)}
+
+print(squares)
+```
+
+Output
+
+```
+{0:0,1:1,2:4,3:9,4:16}
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Set Comprehension
+
+Example
+
+```python
+numbers = {x for x in range(5)}
+
+print(numbers)
+```
+
+Output
+
+```
+{0,1,2,3,4}
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 3. Object-Oriented Programming (OOP)
+
+OOP is a programming paradigm based on **objects and classes**.
+
+It helps organize large programs and improves code reuse.
+
+---
+
+🔹 Class and Object
+
+A **class** is a blueprint.
+
+An **object** is an instance of a class.
+
+### Example
+
+```python
+class Student:
+
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+
+s1 = Student("Saakshi",22)
+
+print(s1.name)
+print(s1.age)
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Constructor
+
+`__init__()` is a **constructor** used to initialize object properties.
+
+Example
+
+```python
+class Car:
+
+    def __init__(self,brand):
+        self.brand = brand
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Methods in Class
+
+Functions inside a class are called **methods**.
+
+Example
+
+```python
+class Student:
+
+    def greet(self):
+        print("Hello Student")
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Four Pillars of OOP
+
+1️⃣ Encapsulation
+
+Wrapping data and methods inside a class.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2️⃣ Inheritance
+
+One class can inherit properties of another.
+
+Example
+
+```python
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog(Animal):
+    pass
+
+d = Dog()
+d.speak()
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3️⃣ Polymorphism
+
+Same function name behaving differently.
+
+Example
+
+```python
+def add(a,b):
+    return a+b
+
+print(add(2,3))
+print(add("Hello ","World"))
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4️⃣ Abstraction
+
+Hiding complex implementation and showing only necessary features.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Python Data Structure Summary
+
+| Type       | Ordered | Mutable |
+| ---------- | ------- | ------- |
+| List       | Yes     | Yes     |
+| Tuple      | Yes     | No      |
+| Set        | No      | Yes     |
+| Dictionary | Yes     | Yes     |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Collections module provides advanced data structures
+✔ Counter helps count frequency of elements
+✔ defaultdict handles missing keys automatically
+✔ Comprehensions create collections in one line
+✔ OOP organizes code using classes and objects
+✔ Four pillars of OOP improve code structure and reuse
