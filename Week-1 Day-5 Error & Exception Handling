@@ -1,0 +1,270 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 1 – Day 5 Error & Exception Handling in Python
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ 1. What are Errors in Python?
+
+An **error** is a problem in the program that prevents it from running correctly.
+
+Errors can occur due to:
+
+* Wrong syntax
+* Invalid operations
+* Incorrect input
+* Logical mistakes
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Types of Errors
+
+There are mainly **three types of errors** in Python:
+
+1️⃣ Syntax Errors
+2️⃣ Runtime Errors (Exceptions)
+3️⃣ Logical Errors
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 1. Syntax Errors
+
+Syntax errors occur when Python **rules or grammar are violated**.
+
+Example:
+
+```python
+print("Hello World"
+```
+
+Output:
+
+```
+SyntaxError: unexpected EOF while parsing
+```
+
+Reason:
+
+* Missing closing bracket.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ 2. Runtime Errors (Exceptions)
+
+Runtime errors occur **while the program is running**.
+
+Example:
+
+```python
+a = 10
+b = 0
+
+print(a / b)
+```
+
+Output:
+
+```
+ZeroDivisionError: division by zero
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 3. Logical Errors
+
+Logical errors occur when the program runs **without crashing but produces incorrect results**.
+
+Example:
+
+```python
+a = 10
+b = 5
+
+print(a - b)   # should have been addition
+```
+
+Output:
+
+```
+5
+```
+
+The program runs but the **logic is incorrect**.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🛠 2. Exception Handling in Python
+
+Exception handling is used to **handle runtime errors gracefully**.
+
+Python provides special keywords:
+
+* `try`
+* `except`
+* `else`
+* `finally`
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 try and except
+
+Used to catch errors and prevent program crashes.
+
+Example:
+
+```python
+try:
+    a = 10
+    b = 0
+    print(a / b)
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+```
+
+Output:
+
+```
+Cannot divide by zero
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Handling Multiple Exceptions
+
+Example:
+
+```python
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+
+except ValueError:
+    print("Invalid input")
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 else Block
+
+The `else` block runs **if no exception occurs**.
+
+Example:
+
+```python
+try:
+    a = 10
+    b = 2
+    print(a / b)
+
+except ZeroDivisionError:
+    print("Error occurred")
+
+else:
+    print("Division successful")
+```
+
+Output:
+
+```
+5.0
+Division successful
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 finally Block
+
+The `finally` block always runs **whether an error occurs or not**.
+
+Example:
+
+```python
+try:
+    x = 10
+    y = 2
+    print(x / y)
+
+except:
+    print("Error")
+
+finally:
+    print("Execution completed")
+```
+
+Output:
+
+```
+5.0
+Execution completed
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Raising Exceptions
+
+Python allows us to **manually raise exceptions** using `raise`.
+
+Example:
+
+```python
+age = -5
+
+if age < 0:
+    raise ValueError("Age cannot be negative")
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Custom Exceptions
+
+You can create your own exception class.
+
+Example:
+
+```python
+class CustomError(Exception):
+    pass
+
+raise CustomError("This is a custom exception")
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📋 Common Python Exceptions
+
+| Exception         | Description              |
+| ----------------- | ------------------------ |
+| ZeroDivisionError | Division by zero         |
+| ValueError        | Invalid value            |
+| TypeError         | Wrong data type          |
+| IndexError        | Invalid list index       |
+| KeyError          | Dictionary key not found |
+| FileNotFoundError | File does not exist      |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Why Exception Handling is Important
+
+Exception handling helps:
+
+✔ Prevent program crashes
+✔ Improve user experience
+✔ Debug errors easily
+✔ Write reliable applications
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✅ Errors are issues that prevent correct execution
+✅ Syntax errors occur due to incorrect code structure
+✅ Runtime errors occur during execution
+✅ Logical errors produce incorrect results
+✅ `try` and `except` handle exceptions safely
+✅ `finally` always executes
+✅ Custom exceptions can be created
+
