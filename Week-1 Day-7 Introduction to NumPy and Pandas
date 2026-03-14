@@ -1,0 +1,321 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 1 – Day 7 Introduction to NumPy and Pandas
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+In **Data Science and AI**, data needs to be processed and analyzed efficiently.
+Two of the most important Python libraries used for this purpose are:
+
+* **NumPy**
+* **Pandas**
+
+These libraries help in **data manipulation, analysis, and numerical computations**.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔢 1. NumPy (Numerical Python)
+
+**NumPy** is a powerful library used for **numerical computing in Python**.
+
+It provides support for:
+
+* Large multi-dimensional arrays
+* Mathematical operations
+* Linear algebra
+* Statistical operations
+
+NumPy is widely used in **Machine Learning, Data Science, and AI applications**.
+
+---
+
+⚙️ Installing NumPy
+
+```bash
+pip install numpy
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 Importing NumPy
+
+```python
+import numpy as np
+```
+
+`np` is an alias used for convenience.
+
+---
+
+🔹 Creating NumPy Arrays
+
+Example:
+
+```python
+import numpy as np
+
+arr = np.array([1,2,3,4,5])
+print(arr)
+```
+
+Output
+
+```
+[1 2 3 4 5]
+```
+
+---
+
+🔹 Multi-Dimensional Array
+
+```python
+arr = np.array([[1,2,3],
+                [4,5,6]])
+
+print(arr)
+```
+
+Output
+
+```
+[[1 2 3]
+ [4 5 6]]
+```
+
+---
+
+🔹 Useful NumPy Functions
+
+Create array of zeros:
+
+```python
+np.zeros((3,3))
+```
+
+Create array of ones:
+
+```python
+np.ones((2,2))
+```
+
+Create sequence of numbers:
+
+```python
+np.arange(0,10)
+```
+
+Create evenly spaced numbers:
+
+```python
+np.linspace(0,1,5)
+```
+
+---
+
+🔹 Basic NumPy Operations
+
+Example:
+
+```python
+a = np.array([1,2,3])
+b = np.array([4,5,6])
+
+print(a + b)
+print(a * b)
+```
+
+Output
+
+```
+[5 7 9]
+[ 4 10 18]
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Advantages of NumPy
+
+✔ Faster than Python lists
+✔ Efficient memory usage
+✔ Supports large datasets
+✔ Provides many mathematical functions
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 2. Pandas
+
+**Pandas** is a powerful library used for **data analysis and data manipulation**.
+
+It provides two main data structures:
+
+* **Series**
+* **DataFrame**
+
+Pandas is widely used in:
+
+* Data Science
+* Machine Learning
+* Data Analysis
+* Financial Analysis
+
+---
+
+⚙️ Installing Pandas
+
+```bash
+pip install pandas
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 Importing Pandas
+
+```python
+import pandas as pd
+```
+
+---
+
+🔹 Pandas Series
+
+A **Series** is a one-dimensional labeled array.
+
+Example:
+
+```python
+import pandas as pd
+
+data = [10,20,30]
+
+s = pd.Series(data)
+
+print(s)
+```
+
+Output
+
+```
+0    10
+1    20
+2    30
+dtype: int64
+```
+
+---
+
+🔹 Pandas DataFrame
+
+A **DataFrame** is a two-dimensional table like structure.
+
+Example:
+
+```python
+data = {
+    "Name": ["Saakshi","Rahul","Anita"],
+    "Age": [22,24,23],
+    "City": ["Delhi","Mumbai","Pune"]
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+```
+
+Output
+
+```
+      Name  Age    City
+0  Saakshi   22   Delhi
+1    Rahul   24  Mumbai
+2    Anita   23    Pune
+```
+
+---
+
+🔹 Reading Data from CSV
+
+Example:
+
+```python
+df = pd.read_csv("data.csv")
+
+print(df.head())
+```
+
+`head()` displays the first 5 rows.
+
+---
+
+🔹 Useful Pandas Functions
+
+Display first rows:
+
+```python
+df.head()
+```
+
+Display last rows:
+
+```python
+df.tail()
+```
+
+Get summary of data:
+
+```python
+df.info()
+```
+
+Statistical summary:
+
+```python
+df.describe()
+```
+
+---
+
+🔹 Selecting Columns
+
+Example:
+
+```python
+df["Name"]
+```
+
+Select multiple columns:
+
+```python
+df[["Name","Age"]]
+```
+
+---
+
+🔹 Filtering Data
+
+Example:
+
+```python
+df[df["Age"] > 22]
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 NumPy vs Pandas
+
+| Feature        | NumPy                   | Pandas             |
+| -------------- | ----------------------- | ------------------ |
+| Purpose        | Numerical computing     | Data analysis      |
+| Data Structure | Arrays                  | Series & DataFrame |
+| Usage          | Mathematical operations | Data manipulation  |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ NumPy is used for **numerical computations**
+✔ NumPy arrays are faster than Python lists
+✔ Pandas is used for **data manipulation and analysis**
+✔ Pandas provides **Series and DataFrame structures**
+✔ Both libraries are essential for **Data Science and Machine Learning**
