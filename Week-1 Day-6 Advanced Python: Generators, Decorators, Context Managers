@@ -1,0 +1,275 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 1 – Day 6 Advanced Python: Generators, Decorators & Context Managers
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Advanced Python concepts help write **efficient, reusable, and cleaner code**.
+Three important advanced concepts are:
+
+* Generators
+* Decorators
+* Context Managers
+
+These are widely used in **data science, machine learning pipelines, and modern Python applications**.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ 1. Generators
+
+A **generator** is a special type of function that returns values **one at a time instead of all at once**.
+
+Generators use the keyword:
+
+```python
+yield
+```
+
+This helps **save memory** and handle large datasets efficiently.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Example of Generator
+
+```python
+def count_up(n):
+    for i in range(n):
+        yield i
+
+gen = count_up(5)
+
+for num in gen:
+    print(num)
+```
+
+Output
+
+```
+0
+1
+2
+3
+4
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Generator vs Normal Function
+
+Normal function:
+
+```python
+def numbers():
+    return [1,2,3]
+```
+
+Generator function:
+
+```python
+def numbers():
+    yield 1
+    yield 2
+    yield 3
+```
+
+Difference:
+
+| Feature      | Normal Function | Generator           |
+| ------------ | --------------- | ------------------- |
+| Memory usage | Higher          | Lower               |
+| Execution    | All at once     | One value at a time |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Generator Expression
+
+Similar to list comprehension but uses **parentheses**.
+
+Example:
+
+```python
+numbers = (x*x for x in range(5))
+
+for n in numbers:
+    print(n)
+```
+
+Output
+
+```
+0
+1
+4
+9
+16
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Why Generators are Useful
+
+✔ Efficient memory usage
+✔ Handle large datasets
+✔ Used in streaming data
+✔ Faster performance in some cases
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 2. Decorators
+
+A **decorator** is a function that modifies the behavior of another function **without changing its code**.
+
+Decorators use the symbol:
+
+```python
+@
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Example of Decorator
+
+```python
+def my_decorator(func):
+    
+    def wrapper():
+        print("Before function runs")
+        func()
+        print("After function runs")
+        
+    return wrapper
+```
+
+Using decorator:
+
+```python
+@my_decorator
+def say_hello():
+    print("Hello!")
+
+say_hello()
+```
+
+Output
+
+```
+Before function runs
+Hello!
+After function runs
+```
+
+---
+
+# 🔹 Real Use Cases of Decorators
+
+Decorators are commonly used for:
+
+* Logging
+* Authentication
+* Performance measurement
+* Access control
+* API validation
+
+Example:
+
+```python
+import time
+
+def timer(func):
+    
+    def wrapper():
+        start = time.time()
+        func()
+        end = time.time()
+        print("Execution time:", end-start)
+        
+    return wrapper
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 3. Context Managers
+
+Context managers are used to **manage resources efficiently**.
+
+They automatically handle **setup and cleanup operations**.
+
+The most common example is **file handling**.
+
+---
+
+# 🔹 Example Without Context Manager
+
+```python
+file = open("data.txt","r")
+data = file.read()
+file.close()
+```
+
+Problem:
+
+If an error occurs, the file **may not close properly**.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Example With Context Manager
+
+```python
+with open("data.txt","r") as file:
+    data = file.read()
+```
+
+Benefits:
+
+✔ File automatically closes
+✔ Cleaner code
+✔ Prevents resource leaks
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Creating Custom Context Manager
+
+Example using `__enter__` and `__exit__`.
+
+```python
+class MyContext:
+    
+    def __enter__(self):
+        print("Entering context")
+        return self
+        
+    def __exit__(self, exc_type, exc_value, traceback):
+        print("Exiting context")
+
+with MyContext():
+    print("Inside block")
+```
+
+Output
+
+```
+Entering context
+Inside block
+Exiting context
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Summary
+
+| Concept         | Purpose                         |
+| --------------- | ------------------------------- |
+| Generator       | Produces values one at a time   |
+| Decorator       | Modifies behavior of functions  |
+| Context Manager | Handles resources automatically |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Generators save memory by producing values lazily
+✔ Decorators modify function behavior without editing original code
+✔ Context managers simplify resource management
+✔ These concepts are widely used in **advanced Python applications**
