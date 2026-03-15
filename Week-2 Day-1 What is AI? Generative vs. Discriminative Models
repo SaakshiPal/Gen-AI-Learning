@@ -1,0 +1,223 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 2 – Day 1
+
+What is Artificial Intelligence? Generative vs Discriminative Models
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤖 1. What is Artificial Intelligence (AI)?
+
+**Artificial Intelligence (AI)** is the field of computer science focused on building systems that can perform tasks that normally require **human intelligence**.
+
+These tasks include:
+
+* Learning from data
+* Problem solving
+* Understanding language
+* Recognizing images
+* Making decisions
+
+AI systems analyze data, identify patterns, and make predictions or decisions.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌍 Applications of AI
+
+AI is widely used in many industries.
+
+Examples:
+
+* **Healthcare** → Disease detection
+* **Finance** → Fraud detection
+* **E-commerce** → Product recommendations
+* **Self-driving cars**
+* **Chatbots and virtual assistants**
+* **Image and speech recognition**
+
+Example AI tools:
+
+* ChatGPT
+* Google Assistant
+* Tesla Autopilot
+* Netflix recommendation system
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Types of Artificial Intelligence
+
+AI can be categorized into three main types.
+
+1️⃣ Narrow AI (Weak AI)
+
+AI designed for **specific tasks only**.
+
+Examples:
+
+* Voice assistants
+* Recommendation systems
+* Spam filters
+
+---
+
+2️⃣ General AI (Strong AI)
+
+AI that can perform **any intellectual task a human can do**.
+
+Currently, **General AI does not exist yet**.
+
+---
+
+3️⃣ Super AI
+
+AI that surpasses **human intelligence**.
+
+This is still **theoretical**.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔍 Machine Learning in AI
+
+**Machine Learning (ML)** is a subset of AI that enables machines to **learn from data instead of being explicitly programmed**.
+
+Main types of ML:
+
+* Supervised Learning
+* Unsupervised Learning
+* Reinforcement Learning
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎨 2. Generative Models
+
+**Generative models** learn the **underlying distribution of data** and can generate **new data samples**.
+
+They try to model:
+
+```
+P(X, Y)
+```
+
+or
+
+```
+P(X)
+```
+
+where **X = input data**.
+
+---
+
+Example
+
+A generative model trained on images of cats can generate **new cat images**.
+
+---
+
+Examples of Generative Models
+
+* **GANs (Generative Adversarial Networks)**
+* **VAEs (Variational Autoencoders)**
+* **Diffusion Models**
+* **Large Language Models (LLMs)**
+
+Examples of generative AI tools:
+
+* ChatGPT
+* DALL-E
+* MidJourney
+* Stable Diffusion
+
+---
+
+Applications of Generative Models
+
+* Text generation
+* Image generation
+* Code generation
+* Music generation
+* Video generation
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 3. Discriminative Models
+
+**Discriminative models** focus on **distinguishing between different classes**.
+
+They learn the probability:
+
+```
+P(Y | X)
+```
+
+where:
+
+* **X = input**
+* **Y = label**
+
+These models are mainly used for **classification and prediction tasks**.
+
+---
+
+Example
+
+Predicting whether an email is **spam or not spam**.
+
+---
+
+Examples of Discriminative Models
+
+* Logistic Regression
+* Support Vector Machines (SVM)
+* Decision Trees
+* Random Forest
+* Neural Networks (classification)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Generative vs Discriminative Models
+
+| Feature     | Generative Models | Discriminative Models      |
+| ----------- | ----------------- | -------------------------- |
+| Goal        | Generate new data | Classify or predict labels |
+| Probability | P(X, Y) or P(X)   | P(Y | X)                   |
+| Focus       | Data distribution | Decision boundary          |
+| Examples    | GAN, VAE, LLM     | Logistic Regression, SVM   |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔎 Simple Example
+
+Generative Model
+
+Generate **new handwritten digits** similar to MNIST dataset.
+
+---
+
+Discriminative Model
+
+Classify a handwritten digit as **0–9**.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Why Generative AI is Important Today
+
+Generative AI powers modern technologies like:
+
+* Chatbots
+* AI assistants
+* Content creation
+* Image generation
+* Code generation
+
+Large Language Models like GPT are **generative models trained on massive text datasets**.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Artificial Intelligence enables machines to perform intelligent tasks
+✔ Machine Learning allows systems to learn from data
+✔ Generative models create **new data samples**
+✔ Discriminative models focus on **classification and prediction**
+✔ Generative AI powers modern tools like ChatGPT and image generators
