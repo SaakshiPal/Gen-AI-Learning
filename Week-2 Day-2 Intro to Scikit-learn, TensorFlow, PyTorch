@@ -1,0 +1,235 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 2 – Day 2 Introduction to Scikit-learn, TensorFlow & PyTorch
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+In AI and Machine Learning, we use powerful libraries to **build, train, and deploy models**.
+
+Three of the most important libraries are:
+
+* **Scikit-learn** → Traditional Machine Learning
+* **TensorFlow** → Deep Learning (Production-level)
+* **PyTorch** → Deep Learning (Research-friendly)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 1. Scikit-learn
+
+**Scikit-learn (sklearn)** is a popular Python library used for **Machine Learning tasks**.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Features of Scikit-learn
+
+✔ Easy to use
+✔ Built on NumPy & SciPy
+✔ Supports many ML algorithms
+✔ Good for beginners
+
+---
+
+⚙️ Installation
+
+```bash id="u0g68l"
+pip install scikit-learn
+```
+
+---
+
+📥 Import
+
+```python id="eqt6fx"
+import sklearn
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Example: Simple Linear Regression
+
+```python id="5wnsn9"
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+Sample data
+X = np.array([[1],[2],[3],[4]])
+y = np.array([2,4,6,8])
+
+Model
+model = LinearRegression()
+model.fit(X, y)
+
+Prediction
+print(model.predict([[5]]))
+```
+
+Output
+
+```id="yr9a9x"
+[10.]
+```
+
+---
+
+🔹 Use Cases
+
+* Classification
+* Regression
+* Clustering
+* Data preprocessing
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ 2. TensorFlow
+
+**TensorFlow** is an open-source library developed by **Google** for **deep learning and AI**.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Features of TensorFlow
+
+✔ Supports large-scale ML models
+✔ Works on CPU & GPU
+✔ Used in production systems
+✔ Provides Keras API for easy usage
+
+---
+
+⚙️ Installation
+
+```bash id="ocddp3"
+pip install tensorflow
+```
+
+---
+
+📥 Import
+
+```python id="jwcn8r"
+import tensorflow as tf
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Example: Simple Neural Network
+
+```python id="hy95x2"
+import tensorflow as tf
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(10, activation='relu'),
+    tf.keras.layers.Dense(1)
+])
+
+model.compile(optimizer='adam', loss='mse')
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Use Cases
+
+* Image recognition
+* Natural Language Processing (NLP)
+* Deep learning models
+* AI applications
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 3. PyTorch
+
+**PyTorch** is an open-source deep learning library developed by **Facebook (Meta)**.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Features of PyTorch
+
+✔ Easy and flexible
+✔ Dynamic computation graph
+✔ Popular in research
+✔ Strong community support
+
+---
+
+⚙️ Installation
+
+```bash id="z3rqh0"
+pip install torch
+```
+
+---
+
+📥 Import
+
+```python id="vyp0p1"
+import torch
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Example: Tensor Creation
+
+```python id="nq7rgn"
+import torch
+
+x = torch.tensor([1,2,3])
+print(x)
+```
+
+Output
+
+```id="d7d9p0"
+tensor([1, 2, 3])
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Simple Neural Network
+
+```python id="6l6gsn"
+import torch.nn as nn
+
+model = nn.Sequential(
+    nn.Linear(3,5),
+    nn.ReLU(),
+    nn.Linear(5,1)
+)
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Use Cases
+
+* Deep learning research
+* NLP models
+* Computer vision
+* AI experimentation
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚔️ Comparison: Scikit-learn vs TensorFlow vs PyTorch
+
+| Feature     | Scikit-learn     | TensorFlow    | PyTorch       |
+| ----------- | ---------------- | ------------- | ------------- |
+| Type        | Machine Learning | Deep Learning | Deep Learning |
+| Difficulty  | Easy             | Medium        | Medium        |
+| Best For    | Beginners        | Production    | Research      |
+| Flexibility | Low              | High          | Very High     |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 When to Use What?
+
+✔ Use **Scikit-learn** → Simple ML problems
+✔ Use **TensorFlow** → Large-scale production systems
+✔ Use **PyTorch** → Research & experimentation
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Scikit-learn is best for traditional ML
+✔ TensorFlow is powerful for production-level AI
+✔ PyTorch is flexible and popular for research
+✔ All three are essential tools in AI development
