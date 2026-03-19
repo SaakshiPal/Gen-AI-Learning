@@ -1,0 +1,265 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 2 – Day 4 Text Preprocessing with NLTK
+
+Tokenization, Stop Words, Stemming & Lemmatization
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+In **Natural Language Processing (NLP)**, raw text data is **unclean and unstructured**.
+
+Before using it in ML/LLMs, we must **preprocess the text**.
+
+👉 This process is called **Text Preprocessing**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔧 Why Text Preprocessing?
+
+Raw text contains:
+
+* Punctuation
+* Stop words
+* Irrelevant words
+* Different word forms
+
+Preprocessing helps:
+
+✔ Clean data
+✔ Improve model accuracy
+✔ Reduce noise
+✔ Standardize text
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 What is NLTK?
+
+**NLTK (Natural Language Toolkit)** is a popular Python library for NLP tasks.
+
+---
+
+⚙️ Installation
+
+```bash
+pip install nltk
+```
+
+---
+
+📥 Setup (Important)
+
+```python
+import nltk
+
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 1. Tokenization
+
+Tokenization means **breaking text into smaller units (tokens)**.
+
+Types:
+
+* Sentence Tokenization
+* Word Tokenization
+
+---
+
+📌 Example: Word Tokenization
+
+```python
+from nltk.tokenize import word_tokenize
+
+text = "Hello! Welcome to AI world."
+
+tokens = word_tokenize(text)
+print(tokens)
+```
+
+Output:
+
+```
+['Hello', '!', 'Welcome', 'to', 'AI', 'world', '.']
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📌 Sentence Tokenization
+
+```python
+from nltk.tokenize import sent_tokenize
+
+text = "Hello world. This is NLP."
+
+sentences = sent_tokenize(text)
+print(sentences)
+```
+
+Output:
+
+```
+['Hello world.', 'This is NLP.']
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 2. Stop Words Removal
+
+**Stop words** are common words that do not add much meaning.
+
+Examples:
+
+```text
+is, the, in, and, of, to
+```
+
+---
+
+📌 Example
+
+```python
+from nltk.corpus import stopwords
+
+text = "This is a simple NLP example"
+
+words = text.split()
+
+stop_words = set(stopwords.words('english'))
+
+filtered = [word for word in words if word.lower() not in stop_words]
+
+print(filtered)
+```
+
+Output:
+
+```
+['simple', 'NLP', 'example']
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 3. Stemming
+
+Stemming reduces words to their **root/base form** (may not be real word).
+
+---
+
+📌 Example
+
+```python
+from nltk.stem import PorterStemmer
+
+ps = PorterStemmer()
+
+words = ["running", "played", "studies"]
+
+for word in words:
+    print(ps.stem(word))
+```
+
+Output:
+
+```
+run
+play
+studi
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 4. Lemmatization
+
+Lemmatization reduces words to their **meaningful base form (lemma)**.
+
+✔ More accurate than stemming
+✔ Produces real words
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📌 Example
+
+```python
+from nltk.stem import WordNetLemmatizer
+
+lemmatizer = WordNetLemmatizer()
+
+words = ["running", "better", "studies"]
+
+for word in words:
+    print(lemmatizer.lemmatize(word))
+```
+
+Output:
+
+```
+running
+better
+study
+```
+
+👉 Note: Lemmatization needs **POS tagging** for best results.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔍 Stemming vs Lemmatization
+
+| Feature  | Stemming             | Lemmatization |
+| -------- | -------------------- | ------------- |
+| Output   | Not always real word | Real word     |
+| Accuracy | Low                  | High          |
+| Speed    | Fast                 | Slower        |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Complete Preprocessing Pipeline
+
+Example:
+
+```python
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+
+text = "This is an example of NLP preprocessing"
+
+# Tokenization
+tokens = word_tokenize(text)
+
+# Stopword removal
+stop_words = set(stopwords.words('english'))
+filtered = [word for word in tokens if word.lower() not in stop_words]
+
+# Stemming
+ps = PorterStemmer()
+stemmed = [ps.stem(word) for word in filtered]
+
+print(stemmed)
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Where This is Used?
+
+✔ Chatbots
+✔ Search engines
+✔ Text classification
+✔ Sentiment analysis
+✔ LLM preprocessing pipelines
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Text preprocessing cleans raw text data
+✔ Tokenization splits text into words/sentences
+✔ Stop words removal reduces noise
+✔ Stemming gives root form (not always correct)
+✔ Lemmatization gives meaningful base words
+✔ NLTK is a powerful NLP library
