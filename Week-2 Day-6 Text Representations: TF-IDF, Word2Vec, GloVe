@@ -1,0 +1,241 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 2 – Day 6 Text Representations: TF-IDF, Word2Vec & GloVe
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Computers cannot understand text directly.
+So we convert text into **numerical form (vectors)**.
+
+👉 This process is called **Text Representation**.
+
+It is a **very important step in NLP and LLM pipelines**.
+
+---
+
+🔧 Why Text Representation?
+
+Machine learning models work only with numbers.
+
+Text representation helps:
+
+✔ Convert text → numbers
+✔ Capture meaning of words
+✔ Enable ML/DL models to process text
+
+---
+
+📊 Types of Text Representation
+
+1️⃣ TF-IDF (Traditional)
+2️⃣ Word2Vec (Word Embeddings)
+3️⃣ GloVe (Global Embeddings)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 1. TF-IDF (Term Frequency – Inverse Document Frequency)
+
+TF-IDF is a statistical method that measures **importance of a word in a document**.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📌 Formula
+
+```text id="f3b8qz"
+TF-IDF = TF × IDF
+```
+
+Where:
+
+* TF (Term Frequency) → how often a word appears
+* IDF (Inverse Document Frequency) → importance of word across documents
+
+---
+
+📌 Intuition
+
+* Common words → low score
+* Rare important words → high score
+
+---
+
+📌 Example
+
+Sentence:
+
+```text id="3p1qzv"
+"I love AI and AI loves me"
+```
+
+👉 Word **AI** appears frequently → higher TF
+👉 Common words like "and" → low importance
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💻 Implementation
+
+```python id="7r0g3n"
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+documents = [
+    "I love AI",
+    "AI is amazing"
+]
+
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(documents)
+
+print(X.toarray())
+```
+
+---
+
+⚠️ Limitations of TF-IDF
+
+❌ Ignores word order
+❌ No semantic meaning
+❌ Treats words independently
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 2. Word2Vec
+
+Word2Vec converts words into **dense vectors (embeddings)**.
+
+👉 Words with similar meaning have **similar vectors**.
+
+---
+
+📌 Key Idea
+
+```text id="l9u5hj"
+"King - Man + Woman ≈ Queen"
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Types of Word2Vec
+
+1️⃣ CBOW (Continuous Bag of Words)
+→ Predict word using context
+
+2️⃣ Skip-gram
+→ Predict context using word
+
+---
+
+💻 Example
+
+```python id="g3l7xv"
+from gensim.models import Word2Vec
+
+sentences = [
+    ["I","love","AI"],
+    ["AI","is","powerful"]
+]
+
+model = Word2Vec(sentences, vector_size=100, window=5, min_count=1)
+
+print(model.wv["AI"])
+```
+
+---
+
+✅ Advantages
+
+✔ Captures semantic meaning
+✔ Dense vectors
+✔ Better than TF-IDF
+
+---
+
+⚠️ Limitations
+
+❌ Context-independent (same word = same vector)
+❌ Cannot handle polysemy (multiple meanings)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 3. GloVe (Global Vectors)
+
+GloVe is a **pre-trained embedding model** developed by Stanford.
+
+It combines:
+
+✔ Global statistics
+✔ Local context
+
+---
+
+📌 Key Idea
+
+Uses **co-occurrence matrix** of words.
+
+👉 Words appearing together frequently → similar vectors
+
+---
+
+💻 Example
+
+```python id="c7y2k9"
+import numpy as np
+
+# Example (conceptual)
+# Load pre-trained embeddings and access word vector
+```
+
+(Note: GloVe requires downloading pre-trained vectors)
+
+---
+
+✅ Advantages
+
+✔ Better semantic relationships
+✔ Uses global + local context
+✔ Pre-trained models available
+
+---
+
+⚠️ Limitations
+
+❌ Static embeddings
+❌ No context awareness
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚔️ Comparison: TF-IDF vs Word2Vec vs GloVe
+
+| Feature | TF-IDF | Word2Vec | GloVe   |
+| ------- | ------ | -------- | ------- |
+| Type    | Sparse | Dense    | Dense   |
+| Meaning | No     | Yes      | Yes     |
+| Context | No     | Limited  | Limited |
+| Speed   | Fast   | Medium   | Medium  |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Modern Approach (Important 🚨)
+
+Today, we use **contextual embeddings** like:
+
+* BERT
+* GPT
+* Transformers
+
+👉 These understand **context of words**.
+
+Example:
+
+* "bank" (river) vs "bank" (money)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Text must be converted into numbers for ML models
+✔ TF-IDF is simple but lacks meaning
+✔ Word2Vec captures semantic relationships
+✔ GloVe improves embeddings using global statistics
+✔ Modern NLP uses transformer-based embeddings
