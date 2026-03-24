@@ -1,0 +1,209 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 2 – Day 7 Project: News Article Categorizer 📰🤖
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Project Overview
+
+In this project, we build a **News Article Categorizer** using **Machine Learning + NLP**.
+
+👉 The model will classify news articles into categories like:
+
+* Sports
+* Politics
+* Technology
+* Business
+* Entertainment
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Objective
+
+✔ Understand NLP pipeline
+✔ Apply text preprocessing
+✔ Convert text into vectors (TF-IDF)
+✔ Train a classification model
+✔ Predict category of new articles
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🛠 Tech Stack
+
+* Python
+* Scikit-learn
+* NLTK
+* Pandas
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Project Pipeline
+
+```text id="9zj7q1"
+Text Data → Preprocessing → Feature Extraction → Model Training → Prediction
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔧 Step 1: Install Required Libraries
+
+```bash id="o1z8cx"
+pip install pandas scikit-learn nltk
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📥 Step 2: Import Libraries
+
+```python id="k2s9fd"
+import pandas as pd
+import nltk
+from nltk.corpus import stopwords
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 Step 3: Load Dataset
+
+Example dataset:
+
+```python id="6g8xq2"
+data = {
+    "text": [
+        "India won the cricket match",
+        "Stock market hits new high",
+        "New AI technology released",
+        "Government passes new law",
+        "Bollywood movie is a hit"
+    ],
+    "label": [
+        "Sports",
+        "Business",
+        "Technology",
+        "Politics",
+        "Entertainment"
+    ]
+}
+
+df = pd.DataFrame(data)
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧹 Step 4: Text Preprocessing
+
+```python id="3w5kq1"
+nltk.download('stopwords')
+stop_words = set(stopwords.words('english'))
+
+def preprocess(text):
+    words = text.lower().split()
+    words = [word for word in words if word not in stop_words]
+    return " ".join(words)
+
+df["clean_text"] = df["text"].apply(preprocess)
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔢 Step 5: Convert Text to Vectors (TF-IDF)
+
+```python id="8v1mlo"
+vectorizer = TfidfVectorizer()
+
+X = vectorizer.fit_transform(df["clean_text"])
+y = df["label"]
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔀 Step 6: Train-Test Split
+
+```python id="t6d4za"
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤖 Step 7: Train Model
+
+```python id="j9k2xp"
+model = MultinomialNB()
+model.fit(X_train, y_train)
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Step 8: Evaluate Model
+
+```python id="c3p8dm"
+y_pred = model.predict(X_test)
+
+print("Accuracy:", accuracy_score(y_test, y_pred))
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔮 Step 9: Make Predictions
+
+```python id="u7x5la"
+sample = ["AI is transforming the world"]
+
+sample_vec = vectorizer.transform(sample)
+
+prediction = model.predict(sample_vec)
+
+print("Predicted Category:", prediction[0])
+```
+
+---
+
+📌 Output Example
+
+```text id="w4k7qn"
+Predicted Category: Technology
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 How It Works
+
+1️⃣ Text is cleaned (stop words removed)
+2️⃣ TF-IDF converts text → numerical vectors
+3️⃣ Naive Bayes learns patterns
+4️⃣ Model predicts category for new input
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Improvements You Can Add
+
+🔥 Use larger dataset (Kaggle news dataset)
+🔥 Try different models (Logistic Regression, SVM)
+🔥 Add stemming/lemmatization
+🔥 Use Word2Vec / BERT embeddings
+🔥 Build a web app using Streamlit
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Real-World Applications
+
+✔ News classification systems
+✔ Content recommendation
+✔ Spam detection
+✔ Email filtering
+✔ Social media analysis
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ NLP pipeline: preprocessing → vectorization → model
+✔ TF-IDF converts text into features
+✔ Naive Bayes works well for text classification
+✔ This is a basic foundation for **LLM + RAG systems**
