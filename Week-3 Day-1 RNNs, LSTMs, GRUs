@@ -1,0 +1,221 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 3 – Day 1 RNNs, LSTMs & GRUs (Sequential Models in Deep Learning)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+In many real-world problems, data is **sequential**:
+
+* Text (sentences, paragraphs)
+* Time series (stock prices)
+* Speech signals
+
+👉 Traditional neural networks cannot handle sequence dependencies well.
+
+So we use **Recurrent Neural Networks (RNNs)** and their advanced versions:
+
+* LSTM
+* GRU
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 1. Recurrent Neural Networks (RNN)
+
+RNNs are designed to **process sequential data**.
+
+They remember previous inputs using a **hidden state**.
+
+---
+
+📌 Key Idea
+
+```text id="7q9d4p"
+Current Output depends on Current Input + Previous Hidden State
+```
+
+---
+
+🔹 How RNN Works
+
+At each step:
+
+```text id="3p6m1s"
+h_t = f(Wx + Uh + b)
+```
+
+Where:
+
+* h → hidden state
+* x → input
+* W, U → weights
+* b → bias
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Example
+
+Sentence:
+
+```text id="r4p7mx"
+"I love AI"
+```
+
+RNN processes word by word:
+
+* "I" → hidden state
+* "love" → uses previous state
+* "AI" → uses full context
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Problem with RNN
+
+❌ **Vanishing Gradient Problem**
+❌ Cannot remember long-term dependencies
+
+Example:
+
+> "The movie was very interesting... I loved it"
+
+RNN may forget earlier words.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 2. LSTM (Long Short-Term Memory)
+
+LSTM is an improved version of RNN that can **remember long-term dependencies**.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 LSTM Structure
+
+LSTM uses **gates** to control information flow:
+
+* Forget Gate
+* Input Gate
+* Output Gate
+
+---
+
+🔹 Key Idea
+
+```text id="u2y7vx"
+Cell State carries long-term memory
+```
+
+---
+
+🔹 Gates Explanation
+
+✔ **Forget Gate** → removes unnecessary info
+✔ **Input Gate** → adds new info
+✔ **Output Gate** → gives final output
+
+---
+
+📌 Why LSTM is Better?
+
+✔ Handles long sequences
+✔ Solves vanishing gradient problem
+✔ Used in NLP, speech recognition
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ 3. GRU (Gated Recurrent Unit)
+
+GRU is a **simplified version of LSTM**.
+
+---
+
+🔹 Key Features
+
+* Fewer parameters
+* Faster training
+* Similar performance to LSTM
+
+---
+
+🔹 GRU Gates
+
+* Update Gate
+* Reset Gate
+
+---
+
+📌 Key Idea
+
+```text id="g7n2zp"
+Combines memory and hidden state efficiently
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚔️ RNN vs LSTM vs GRU
+
+| Feature     | RNN        | LSTM      | GRU       |
+| ----------- | ---------- | --------- | --------- |
+| Memory      | Short-term | Long-term | Long-term |
+| Complexity  | Low        | High      | Medium    |
+| Speed       | Fast       | Slow      | Faster    |
+| Performance | Low        | High      | High      |
+
+---
+
+🧠 When to Use What?
+
+✔ Use **RNN** → simple sequences
+✔ Use **LSTM** → long dependencies
+✔ Use **GRU** → faster alternative to LSTM
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💻 Simple Example (PyTorch)
+
+```python id="9f2j8q"
+import torch
+import torch.nn as nn
+
+# RNN
+rnn = nn.RNN(input_size=10, hidden_size=20, num_layers=1)
+
+# LSTM
+lstm = nn.LSTM(input_size=10, hidden_size=20)
+
+# GRU
+gru = nn.GRU(input_size=10, hidden_size=20)
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Applications
+
+✔ Text generation
+✔ Language translation
+✔ Chatbots
+✔ Speech recognition
+✔ Time-series prediction
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚨 Important Note
+
+RNN, LSTM, GRU were widely used earlier.
+
+👉 Now mostly replaced by:
+
+* Transformers
+* Attention-based models
+
+(because they handle long context better)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ RNN processes sequential data
+✔ RNN suffers from vanishing gradient problem
+✔ LSTM solves long-term memory issue using gates
+✔ GRU is faster and simpler than LSTM
+✔ These models are foundation before Transformers
