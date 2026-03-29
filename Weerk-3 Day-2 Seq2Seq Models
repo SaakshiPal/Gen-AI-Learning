@@ -1,0 +1,189 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 3 – Day 2 Sequence-to-Sequence (Seq2Seq) Models
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Many real-world problems involve **mapping one sequence to another**.
+
+👉 These are called **Sequence-to-Sequence (Seq2Seq) tasks**.
+
+Examples:
+
+* Language Translation (English → French)
+* Chatbots (Question → Answer)
+* Text Summarization
+* Speech-to-Text
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 What is Seq2Seq Model?
+
+A **Seq2Seq model** is a neural network architecture that converts:
+
+```text
+Input Sequence → Output Sequence
+```
+
+---
+
+🧩 Architecture of Seq2Seq
+
+A Seq2Seq model has two main parts:
+
+1️⃣ Encoder
+2️⃣ Decoder
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 1. Encoder
+
+* Takes input sequence
+* Converts it into a **context vector (fixed-size representation)**
+
+Example:
+
+```text
+"I love AI" → [context vector]
+```
+
+---
+
+🔹 2. Decoder
+
+* Takes context vector
+* Generates output sequence step by step
+
+Example:
+
+```text
+[context vector] → "J'aime l'IA"
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Working of Seq2Seq
+
+1️⃣ Encoder reads input sequence
+2️⃣ Converts it into context vector
+3️⃣ Decoder uses context vector
+4️⃣ Generates output sequence one word at a time
+
+---
+
+# 📊 Example: Language Translation
+
+Input:
+
+```text
+"I am happy"
+```
+
+Output:
+
+```text
+"Je suis heureux"
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Problem with Basic Seq2Seq
+
+❌ Fixed-size context vector
+❌ Information loss for long sequences
+❌ Poor performance on long sentences
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 Solution → Attention Mechanism
+
+👉 Attention allows the model to **focus on relevant parts of input** instead of relying on one vector.
+
+This improves:
+
+✔ Accuracy
+✔ Handling long sequences
+
+---
+
+🔗 Seq2Seq with RNN / LSTM
+
+Earlier implementations used:
+
+* RNN
+* LSTM
+* GRU
+
+Example:
+
+```python
+import torch.nn as nn
+
+encoder = nn.LSTM(input_size=10, hidden_size=20)
+decoder = nn.LSTM(input_size=10, hidden_size=20)
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ Seq2Seq with Attention (Important 🚨)
+
+Instead of single context vector:
+
+👉 Decoder looks at **all encoder outputs**
+
+This solves:
+
+* Long dependency problem
+* Information bottleneck
+
+---
+
+🧠 Applications of Seq2Seq
+
+✔ Machine Translation
+✔ Chatbots
+✔ Text Summarization
+✔ Question Answering
+✔ Speech Recognition
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Seq2Seq vs Traditional Models
+
+| Feature      | Traditional Models | Seq2Seq          |
+| ------------ | ------------------ | ---------------- |
+| Input/Output | Fixed size         | Variable length  |
+| Context      | Limited            | Full sequence    |
+| Use Case     | Classification     | Generation tasks |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Modern Evolution
+
+Seq2Seq models led to:
+
+👉 **Transformers (VERY IMPORTANT)**
+
+Examples:
+
+* BERT
+* GPT
+* T5
+
+These models:
+
+✔ Use attention
+✔ Handle long context better
+✔ Are faster and more powerful
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Seq2Seq maps input sequence → output sequence
+✔ Consists of Encoder + Decoder
+✔ Basic model suffers from fixed context vector problem
+✔ Attention improves performance
+✔ Foundation for modern models like Transformers
