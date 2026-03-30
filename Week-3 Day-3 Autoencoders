@@ -1,0 +1,201 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 3 – Day 3
+
+Autoencoders (Unsupervised Deep Learning)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+An **Autoencoder** is a type of neural network used to:
+
+✔ Learn efficient representation of data
+✔ Compress data (Dimensionality Reduction)
+✔ Reconstruct input data
+
+👉 It is an **unsupervised learning model** (no labels required).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Key Idea
+
+```text id="g2y8qm"
+Input → Encoder → Latent Space → Decoder → Output (Reconstructed Input)
+```
+
+---
+
+🧩 Architecture of Autoencoder
+
+Autoencoder has **three main parts**:
+
+1️⃣ Encoder
+2️⃣ Latent Space (Bottleneck)
+3️⃣ Decoder
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 1. Encoder
+
+* Compresses input data
+* Converts high-dimensional data → low-dimensional representation
+
+Example:
+
+```text id="v5u2bx"
+Image (1000 features) → Compressed (50 features)
+```
+
+---
+
+🔹 2. Latent Space (Bottleneck)
+
+* Core representation of data
+* Stores important features only
+* Removes noise / redundancy
+
+---
+
+🔹 3. Decoder
+
+* Reconstructs original data from compressed form
+
+Example:
+
+```text id="eq9k3n"
+Compressed → Reconstructed Image
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Objective of Autoencoder
+
+Minimize reconstruction error:
+
+```text id="5u2xmc"
+Loss = Input - Output
+```
+
+Common loss functions:
+
+* Mean Squared Error (MSE)
+* Binary Cross Entropy
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Types of Autoencoders
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 1. Vanilla Autoencoder
+
+* Basic encoder + decoder
+* Used for simple tasks
+
+---
+
+🔹 2. Sparse Autoencoder
+
+* Forces model to use fewer neurons
+* Helps learn important features
+
+---
+
+🔹 3. Denoising Autoencoder
+
+* Input contains noise
+* Model learns to reconstruct clean data
+
+Example:
+
+```text id="3wz7al"
+Noisy Image → Clean Image
+```
+
+---
+
+🔹 4. Variational Autoencoder (VAE) 🚨
+
+* Generates new data
+* Used in **Generative AI**
+
+Example:
+
+* Image generation
+* Face generation
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ Applications of Autoencoders
+
+✔ Dimensionality Reduction
+✔ Image Compression
+✔ Noise Removal
+✔ Anomaly Detection
+✔ Feature Extraction
+✔ Data Generation (VAE)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💻 Simple Example (TensorFlow)
+
+```python id="6k2x9j"
+import tensorflow as tf
+from tensorflow.keras import layers
+
+# Encoder
+encoder = tf.keras.Sequential([
+    layers.Dense(64, activation='relu'),
+    layers.Dense(32, activation='relu')
+])
+
+# Decoder
+decoder = tf.keras.Sequential([
+    layers.Dense(64, activation='relu'),
+    layers.Dense(100, activation='sigmoid')
+])
+
+# Autoencoder
+model = tf.keras.Sequential([encoder, decoder])
+
+model.compile(optimizer='adam', loss='mse')
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚔️ Autoencoder vs PCA
+
+| Feature       | Autoencoder    | PCA                |
+| ------------- | -------------- | ------------------ |
+| Type          | Neural Network | Statistical Method |
+| Flexibility   | High           | Low                |
+| Non-linearity | Yes            | No                 |
+| Performance   | Better         | Limited            |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Why Autoencoders are Important?
+
+✔ Learn compressed representations
+✔ Useful in preprocessing for ML models
+✔ Foundation for generative models (VAE)
+✔ Used in modern AI systems
+
+---
+
+🚨 Important Connection
+
+Autoencoders → Representation Learning → Deep Learning → Generative AI
+
+👉 VAE is directly related to **Generative Models**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Autoencoder compresses and reconstructs data
+✔ Works without labeled data
+✔ Consists of Encoder + Latent Space + Decoder
+✔ Used for dimensionality reduction & noise removal
+✔ VAE is used in generative AI
