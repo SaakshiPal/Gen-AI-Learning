@@ -1,0 +1,235 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 3 – Day 4 Transformer Architecture (Core of LLMs)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+The **Transformer** is the most important architecture in modern AI.
+
+👉 It is the backbone of:
+
+* GPT (ChatGPT)
+* BERT
+* T5
+* LLMs (Large Language Models)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 Why Transformers?
+
+Before Transformers:
+
+* RNN / LSTM were used
+* But they had problems:
+
+  * Slow training
+  * Cannot handle long dependencies well
+
+👉 Transformers solved these problems using:
+
+```text
+Attention Mechanism
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Key Idea of Transformer
+
+```text
+"Focus on important words in a sentence"
+```
+
+Example:
+
+Sentence:
+
+```text
+"The cat sat on the mat because it was tired"
+```
+
+👉 "it" refers to **cat**
+
+Transformer understands this using **attention**.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Transformer Architecture Overview
+
+A Transformer has two main parts:
+
+1️⃣ Encoder
+2️⃣ Decoder
+
+---
+
+🔹 Encoder
+
+* Processes input sequence
+* Extracts meaningful features
+
+---
+
+🔹 Decoder
+
+* Generates output sequence
+* Uses encoder output
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Components of Transformer
+
+Each encoder/decoder block contains:
+
+* Multi-Head Attention
+* Feed Forward Network
+* Layer Normalization
+* Residual Connections
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 1. Input Embedding
+
+Words are converted into vectors.
+
+Example:
+
+```text
+"AI is powerful" → [vectors]
+```
+
+---
+
+🔹 2. Positional Encoding
+
+Transformers don’t understand order naturally.
+
+👉 Positional encoding adds **sequence information**.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 3. Multi-Head Attention
+
+Core component of Transformer.
+
+👉 It allows model to:
+
+✔ Focus on different parts of sentence
+✔ Learn relationships between words
+
+---
+
+🔹 Attention Formula
+
+```text
+Attention(Q, K, V) = softmax(QKᵀ / √d) V
+```
+
+Where:
+
+* Q = Query
+* K = Key
+* V = Value
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 4. Feed Forward Network
+
+* Fully connected layers
+* Applied after attention
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 5. Residual Connection
+
+Helps in:
+
+✔ Better gradient flow
+✔ Avoiding vanishing gradient
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 6. Layer Normalization
+
+* Stabilizes training
+* Improves performance
+
+---
+
+🔄 Encoder Flow
+
+```text
+Input → Embedding → Positional Encoding → Attention → FFN → Output
+```
+
+---
+
+🔄 Decoder Flow
+
+```text
+Output → Masked Attention → Encoder-Decoder Attention → FFN → Final Output
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 Types of Transformers
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Encoder-Based
+
+* Example: BERT
+* Used for understanding tasks
+
+---
+
+🔹 Decoder-Based
+
+* Example: GPT
+* Used for text generation
+
+---
+
+🔹 Encoder-Decoder
+
+* Example: T5
+* Used for translation & summarization
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ Advantages of Transformers
+
+✔ Handles long dependencies
+✔ Parallel processing (faster training)
+✔ Better performance than RNN/LSTM
+✔ Scalable for large datasets
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Applications
+
+✔ ChatGPT
+✔ Language Translation
+✔ Text Summarization
+✔ Question Answering
+✔ Code Generation
+
+---
+
+🚨 Important Note
+
+Transformers are the **foundation of LLMs and Generative AI**.
+
+👉 Without Transformers → No ChatGPT
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Transformer uses attention instead of recurrence
+✔ Consists of Encoder + Decoder
+✔ Multi-head attention is core component
+✔ Handles long sequences efficiently
+✔ Backbone of modern AI systems
+
