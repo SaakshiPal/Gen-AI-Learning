@@ -1,0 +1,187 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 3 – Day 5 Self-Attention & Multi-Head Attention (Core of Transformers)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+**Self-Attention** is the most important concept behind **Transformers and LLMs**.
+
+👉 It allows the model to:
+
+✔ Understand relationships between words
+✔ Focus on important parts of a sentence
+✔ Capture context efficiently
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 What is Self-Attention?
+
+Self-attention means:
+
+```text id="k2v7bz"
+Each word looks at other words in the same sentence to understand context
+```
+
+---
+
+📌 Example
+
+Sentence:
+
+```text id="4z1hpx"
+"The cat sat on the mat because it was tired"
+```
+
+👉 "it" refers to **cat**
+
+Self-attention helps model understand this relationship.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ How Self-Attention Works
+
+Each word is converted into three vectors:
+
+* Query (Q)
+* Key (K)
+* Value (V)
+
+---
+
+🔹 Key Idea
+
+```text id="7v5d0q"
+Attention Score = How important another word is
+```
+
+---
+
+🧮 Attention Formula
+
+```text id="0x6v5h"
+Attention(Q, K, V) = softmax(QKᵀ / √d) V
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Step-by-Step Process
+
+1️⃣ Convert words → embeddings
+2️⃣ Generate Q, K, V vectors
+3️⃣ Compute similarity (Q × K)
+4️⃣ Apply softmax (get weights)
+5️⃣ Multiply with V
+6️⃣ Get final output
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Example (Concept)
+
+Sentence:
+
+```text id="l8t3c7"
+"I love AI"
+```
+
+👉 "love" may focus more on "AI" than "I"
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 Why Self-Attention is Powerful
+
+✔ Captures long-range dependencies
+✔ Works in parallel
+✔ Better than RNN/LSTM
+✔ Handles context efficiently
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Multi-Head Attention
+
+Instead of using one attention mechanism:
+
+👉 Transformers use **multiple attention heads**
+
+---
+
+🔹 What is Multi-Head Attention?
+
+```text id="9u7q2d"
+Multiple attention layers run in parallel to capture different relationships
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📌 Example
+
+Sentence:
+
+```text id="g4x1np"
+"Apple is releasing a new product"
+```
+
+Different heads may focus on:
+
+* "Apple" → company
+* "product" → object
+* "releasing" → action
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ How Multi-Head Works
+
+1️⃣ Split Q, K, V into multiple parts
+2️⃣ Apply attention separately
+3️⃣ Combine outputs
+4️⃣ Pass through linear layer
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Single vs Multi-Head Attention
+
+| Feature     | Single Attention | Multi-Head Attention  |
+| ----------- | ---------------- | --------------------- |
+| Focus       | One perspective  | Multiple perspectives |
+| Performance | Limited          | Better                |
+| Learning    | Simple patterns  | Complex relationships |
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Flow in Transformer
+
+```text id="j3v9a2"
+Input → Embedding → Self-Attention → Multi-Head → FFN → Output
+```
+
+---
+
+🧠 Applications
+
+✔ ChatGPT
+✔ Machine Translation
+✔ Text Summarization
+✔ Question Answering
+✔ Code Generation
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚨 Important Insight
+
+Self-Attention is the **reason why Transformers replaced RNNs**.
+
+👉 It solves:
+
+* Long dependency problem
+* Sequential processing limitation
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Self-attention lets words understand each other
+✔ Uses Query, Key, Value mechanism
+✔ Multi-head attention captures multiple relationships
+✔ Core building block of Transformers and LLMs
+✔ Enables powerful models like GPT
