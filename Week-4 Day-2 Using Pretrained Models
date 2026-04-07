@@ -1,0 +1,204 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 4 – Day 2 Using Pre-trained Models (BERT, GPT & More)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Training AI models from scratch is:
+
+❌ Time-consuming
+❌ Expensive
+❌ Requires large datasets
+
+👉 Instead, we use **pre-trained models**.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What are Pre-trained Models?
+
+Pre-trained models are models that are:
+
+✔ Already trained on large datasets
+✔ Ready to use
+✔ Fine-tunable for specific tasks
+
+---
+
+🎯 Benefits
+
+✔ Saves time
+✔ Requires less data
+✔ High performance
+✔ Easy to use
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤖 Popular Pre-trained Models
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 1. BERT (Bidirectional Encoder Representations from Transformers)
+
+* Developed by Google
+* Encoder-based model
+* Understands context from both directions
+
+👉 Best for:
+
+✔ Text classification
+✔ Question answering
+✔ Sentiment analysis
+
+---
+
+🔹 2. GPT (Generative Pre-trained Transformer)
+
+* Developed by OpenAI
+* Decoder-based model
+* Generates text
+
+👉 Best for:
+
+✔ Chatbots
+✔ Content generation
+✔ Code generation
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 3. T5 (Text-to-Text Transfer Transformer)
+
+* Converts all NLP tasks into text-to-text format
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Using Pre-trained Models with Hugging Face
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Step 1: Install Transformers
+
+```bash id="p3k7zd"
+pip install transformers
+```
+
+---
+
+🔹 Step 2: Import Pipeline
+
+```python id="n6x2ka"
+from transformers import pipeline
+```
+
+---
+
+🔹 Example 1: Sentiment Analysis (BERT-based)
+
+```python id="v8l3mz"
+classifier = pipeline("sentiment-analysis")
+
+result = classifier("This course is amazing!")
+
+print(result)
+```
+
+Output:
+
+```id="q9c5vr"
+[{'label': 'POSITIVE', 'score': 0.99}]
+```
+
+---
+
+🔹 Example 2: Text Generation (GPT-based)
+
+```python id="z2f8qp"
+generator = pipeline("text-generation")
+
+result = generator("AI will change the world", max_length=30)
+
+print(result)
+```
+
+---
+
+🔹 Example 3: Question Answering
+
+```python id="m4k9xs"
+qa = pipeline("question-answering")
+
+result = qa(
+    question="What is AI?",
+    context="AI is the simulation of human intelligence by machines."
+)
+
+print(result)
+```
+
+---
+
+🔹 Example 4: Text Summarization
+
+```python id="t7p2dl"
+summarizer = pipeline("summarization")
+
+text = "Artificial Intelligence is a rapidly growing field..."
+
+print(summarizer(text))
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔧 Fine-Tuning (Important Concept)
+
+Fine-tuning means:
+
+```text id="r5w8yz"
+Adapting a pre-trained model to a specific task
+```
+
+Example:
+
+* Train BERT on your custom dataset
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Pre-trained vs Training from Scratch
+
+| Feature       | Pre-trained Model | From Scratch |
+| ------------- | ----------------- | ------------ |
+| Time          | Low               | High         |
+| Data Required | Less              | Huge         |
+| Performance   | High              | Depends      |
+| Complexity    | Easy              | Difficult    |
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Cases
+
+✔ Chatbots (ChatGPT-like apps)
+✔ Resume screening
+✔ News classification
+✔ Translation systems
+✔ AI assistants
+
+---
+
+🚨 Important Insight
+
+👉 Pre-trained models are the **foundation of LLM & RAG systems**.
+
+Without them:
+
+* Building AI apps becomes very hard
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Pre-trained models save time and effort
+✔ BERT is used for understanding tasks
+✔ GPT is used for text generation
+✔ Hugging Face makes model usage easy
+✔ Fine-tuning improves performance for specific tasks
