@@ -1,0 +1,198 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 4 – Day 5 Pipeline Abstraction & Inference API 🤗⚡
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Hugging Face makes AI development easy using:
+
+* Pipeline Abstraction
+* Inference API
+
+👉 These help you **use powerful models with minimal code**.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 1. What is Pipeline Abstraction?
+
+A **pipeline** is a high-level API that simplifies using AI models.
+
+👉 Instead of writing complex code:
+
+```text id="p1x7qz"
+Use one line → Get result
+```
+
+---
+
+🎯 Why Pipelines?
+
+✔ Easy to use
+✔ No deep model knowledge required
+✔ Quick prototyping
+✔ Less code
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Installation
+
+```bash id="u4n8zp"
+pip install transformers
+```
+
+---
+
+📥 Import Pipeline
+
+```python id="z2m5kp"
+from transformers import pipeline
+```
+
+---
+
+🔹 Common Pipelines
+
+| Task               | Pipeline Name        |
+| ------------------ | -------------------- |
+| Sentiment Analysis | "sentiment-analysis" |
+| Text Generation    | "text-generation"    |
+| Summarization      | "summarization"      |
+| Translation        | "translation"        |
+| Question Answering | "question-answering" |
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💻 Example 1: Sentiment Analysis
+
+```python id="k9w3xz"
+classifier = pipeline("sentiment-analysis")
+
+print(classifier("I love AI"))
+```
+
+---
+
+💻 Example 2: Text Generation
+
+```python id="q2p8mn"
+generator = pipeline("text-generation")
+
+print(generator("AI is the future", max_length=30))
+```
+
+---
+
+💻 Example 3: Summarization
+
+```python id="r7t5pl"
+summarizer = pipeline("summarization")
+
+text = "Artificial Intelligence is transforming industries..."
+
+print(summarizer(text))
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 How Pipeline Works Internally
+
+```text id="b5v2yx"
+Input → Tokenizer → Model → Output → Post-processing
+```
+
+---
+
+⚠️ Limitations of Pipeline
+
+❌ Limited customization
+❌ Not suitable for complex use cases
+❌ Less control over model
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔗 2. Inference API
+
+The **Inference API** allows you to use models **via cloud without downloading them**.
+
+---
+
+🔹 What is Inference API?
+
+```text id="x9k3qa"
+Send request → Model runs on server → Get response
+```
+
+---
+
+🌐 Why Use Inference API?
+
+✔ No heavy setup
+✔ Works on low-end systems
+✔ Easy integration in apps
+✔ Scalable
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔐 API Key Setup
+
+1. Create Hugging Face account
+2. Generate API token
+3. Use in requests
+
+---
+
+💻 Example: Using Inference API
+
+```python id="v8m4pn"
+import requests
+
+API_URL = "https://api-inference.huggingface.co/models/gpt2"
+headers = {"Authorization": "Bearer YOUR_API_KEY"}
+
+data = {"inputs": "AI is changing the world"}
+
+response = requests.post(API_URL, headers=headers, json=data)
+
+print(response.json())
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ Pipeline vs Inference API
+
+| Feature     | Pipeline     | Inference API  |
+| ----------- | ------------ | -------------- |
+| Setup       | Local        | Cloud          |
+| Speed       | Fast (local) | Depends on API |
+| Ease        | Very easy    | Easy           |
+| Scalability | Limited      | High           |
+
+---
+
+🔄 Workflow
+
+```text id="t1z7qp"
+Pipeline (Local Testing) → Inference API (Deployment)
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Real-World Applications
+
+✔ Chatbots
+✔ AI web apps
+✔ Content generation tools
+✔ Customer support bots
+✔ LLM-based products
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Pipeline simplifies model usage with minimal code
+✔ Inference API allows cloud-based model access
+✔ Both are essential for building AI applications
+✔ Helps in fast prototyping and deployment
+
