@@ -1,0 +1,204 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 4 – Day 6 Pretraining Objectives & GPT vs BERT 🤖⚡
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Modern AI models like GPT and BERT are trained using **pretraining objectives**.
+
+👉 These objectives define **how a model learns from data before fine-tuning**.
+
+---
+
+🔹 What is Pretraining?
+
+Pretraining means:
+
+```text id="p8x4qz"
+Training a model on large datasets before applying it to specific tasks
+```
+
+---
+
+🎯 Why Pretraining?
+
+✔ Learn language patterns
+✔ Reduce training time
+✔ Improve performance
+✔ Enable transfer learning
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Pretraining Objectives
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 1. Language Modeling (LM)
+
+The model predicts the **next word in a sequence**.
+
+Example:
+
+```text id="m2y7kp"
+"I love AI because it is ___"
+```
+
+👉 Model predicts: "powerful", "useful", etc.
+
+---
+
+🔹 2. Masked Language Modeling (MLM)
+
+Some words are hidden (masked), and the model predicts them.
+
+Example:
+
+```text id="v5q1nx"
+"I love [MASK] very much"
+```
+
+👉 Model predicts: "AI"
+
+---
+
+🔹 3. Next Sentence Prediction (NSP)
+
+Model predicts if one sentence follows another.
+
+Example:
+
+```text id="q3w9lz"
+Sentence A: "I love AI"
+Sentence B: "It is very useful"
+```
+
+👉 Model checks if B logically follows A.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤖 2. GPT (Generative Pre-trained Transformer)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Key Features
+
+* Decoder-based model
+* Uses **causal language modeling**
+* Predicts next word
+* Generates text
+
+---
+
+📌 Example
+
+```text id="x8n2qa"
+Input: "AI is"
+Output: "transforming the world"
+```
+
+---
+
+🔹 GPT Training Objective
+
+```text id="c9m4zy"
+Predict next word (Left → Right)
+```
+
+---
+
+🔹 Use Cases
+
+✔ Chatbots
+✔ Content generation
+✔ Code generation
+✔ Story writing
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 3. BERT (Bidirectional Encoder Representations from Transformers)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Key Features
+
+* Encoder-based model
+* Reads text **in both directions**
+* Understands context deeply
+
+---
+
+🔹 BERT Training Objectives
+
+1️⃣ Masked Language Modeling (MLM)
+
+2️⃣ Next Sentence Prediction (NSP)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📌 Example
+
+```text id="k1y8vt"
+"The cat sat on the [MASK]"
+```
+
+👉 Model predicts: "mat"
+
+---
+
+🔹 Use Cases
+
+✔ Text classification
+✔ Question answering
+✔ Sentiment analysis
+✔ Named entity recognition
+
+---
+
+⚔️ GPT vs BERT
+
+| Feature      | GPT                  | BERT               |
+| ------------ | -------------------- | ------------------ |
+| Architecture | Decoder              | Encoder            |
+| Direction    | Left → Right         | Bidirectional      |
+| Objective    | Next word prediction | Masked + NSP       |
+| Strength     | Text generation      | Text understanding |
+| Use Case     | Chatbots             | NLP tasks          |
+
+---
+
+🔄 Simple Understanding
+
+👉 GPT = **Generator**
+👉 BERT = **Understanding model**
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 When to Use What?
+
+✔ Use **GPT** → When you need to generate text
+✔ Use **BERT** → When you need to analyze/understand text
+
+---
+
+🚨 Important Insight
+
+👉 Modern LLMs (like GPT-4, GPT-5) are based on **GPT-style architectures**.
+
+👉 Many NLP systems combine both:
+
+* Understanding (BERT-like)
+* Generation (GPT-like)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Pretraining helps models learn language patterns
+✔ GPT uses next-word prediction
+✔ BERT uses masked word prediction
+✔ GPT is best for generation
+✔ BERT is best for understanding
+✔ Both are core to modern NLP systems
+
