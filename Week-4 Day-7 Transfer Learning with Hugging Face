@@ -1,0 +1,177 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 4 – Day 7 Transfer Learning with Hugging Face 🤗🔄
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Training AI models from scratch is expensive and time-consuming.
+
+👉 **Transfer Learning** solves this problem by reusing knowledge from pre-trained models.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is Transfer Learning?
+
+```text
+Using a pre-trained model and adapting it to a new task
+```
+
+---
+
+🎯 Why Transfer Learning?
+
+✔ Saves time
+✔ Requires less data
+✔ Improves performance
+✔ Reduces computational cost
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 How Transfer Learning Works
+
+1️⃣ Train model on large dataset (pretraining)
+2️⃣ Reuse model for new task
+3️⃣ Fine-tune on smaller dataset
+
+---
+
+🔁 Workflow
+
+```text id="n8x4qp"
+Pretrained Model → Fine-Tuning → Task-Specific Model
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤖 Transfer Learning in Hugging Face
+
+Hugging Face makes transfer learning easy using:
+
+* Transformers
+* Pre-trained models
+* Trainer API
+
+---
+
+⚙️ Installation
+
+```bash id="z7m2pl"
+pip install transformers datasets
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📥 Load Pre-trained Model
+
+```python id="r4k8qn"
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+model_name = "bert-base-uncased"
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name)
+```
+
+---
+
+🔹 Tokenization
+
+```python id="x5p2mv"
+text = "I love AI"
+
+inputs = tokenizer(text, return_tensors="pt")
+```
+
+---
+
+🔹 Fine-Tuning (Concept)
+
+```text id="q1m7zp"
+Train model on your custom dataset
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💻 Example: Simple Fine-Tuning Setup
+
+```python id="k6x9dp"
+from transformers import Trainer, TrainingArguments
+
+training_args = TrainingArguments(
+    output_dir="./results",
+    num_train_epochs=1,
+    per_device_train_batch_size=8
+)
+
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=None  # Replace with your dataset
+)
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Types of Transfer Learning
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 1. Feature Extraction
+
+* Use pre-trained model as it is
+* No training
+
+---
+
+🔹 2. Fine-Tuning
+
+* Train model on new dataset
+* Adjust weights
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚔️ Feature Extraction vs Fine-Tuning
+
+| Feature  | Feature Extraction | Fine-Tuning |
+| -------- | ------------------ | ----------- |
+| Training | No                 | Yes         |
+| Accuracy | Medium             | High        |
+| Time     | Fast               | Slower      |
+
+---
+
+🚀 Applications
+
+✔ Sentiment analysis
+✔ Chatbots
+✔ Resume screening
+✔ Document classification
+✔ Recommendation systems
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Challenges
+
+❌ Overfitting (small dataset)
+❌ Requires GPU for large models
+❌ Data quality matters
+
+---
+
+🧠 Real-World Example
+
+👉 Fine-tune BERT on:
+
+* Your own dataset
+* Domain-specific data (medical, finance, etc.)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Transfer learning reuses pre-trained models
+✔ Hugging Face makes fine-tuning easy
+✔ Fine-tuning improves performance
+✔ Essential for real-world AI applications
