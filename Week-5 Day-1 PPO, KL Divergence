@@ -1,0 +1,202 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 5 – Day 1 PPO (Proximal Policy Optimization) & KL Divergence 🎯
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+In modern AI (especially LLMs like GPT), models are improved using:
+
+* Reinforcement Learning (RL)
+* Human feedback (RLHF)
+
+👉 PPO and KL Divergence are **key concepts used in training LLMs**.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎮 1. Reinforcement Learning (RL)
+
+Reinforcement Learning is a learning method where:
+
+```text id="n2x8qp"
+Agent → takes action → gets reward → learns from feedback
+```
+
+---
+
+📌 Example
+
+* Chatbot gives answer
+* Human gives feedback
+* Model improves response
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Key Components of RL
+
+* Agent → Model
+* Environment → Data / User
+* Action → Output
+* Reward → Feedback
+
+---
+
+⚡ 2. What is PPO?
+
+**PPO (Proximal Policy Optimization)** is a popular RL algorithm.
+
+👉 It is used to **fine-tune models safely and efficiently**.
+
+---
+
+🔹 Key Idea of PPO
+
+```text id="v5k3zp"
+Update the model gradually without making large changes
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Why PPO?
+
+✔ Stable training
+✔ Prevents large updates
+✔ Improves performance
+✔ Widely used in RLHF (ChatGPT training)
+
+---
+
+🔧 How PPO Works (Concept)
+
+1️⃣ Model generates output
+2️⃣ Compare with previous policy
+3️⃣ Calculate reward
+4️⃣ Update model carefully
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔒 Clipping in PPO
+
+PPO uses a **clipping mechanism** to avoid large updates.
+
+```text id="t8x4qn"
+Limit how much the model changes
+```
+
+---
+
+📊 PPO Objective (Simplified)
+
+```text id="m1k7pz"
+Maximize reward while limiting change in policy
+```
+
+---
+
+📌 Real Use
+
+👉 Used in:
+
+* ChatGPT (RLHF)
+* Game AI
+* Robotics
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📉 3. KL Divergence
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is KL Divergence?
+
+KL Divergence measures:
+
+```text id="r3x9qp"
+Difference between two probability distributions
+```
+
+---
+
+📌 Simple Meaning
+
+👉 How different is **new model vs old model**
+
+---
+
+📊 Formula
+
+```text id="z7k2mp"
+KL(P || Q) = Σ P(x) log(P(x) / Q(x))
+```
+
+---
+
+🔹 Intuition
+
+* Small KL → models are similar
+* Large KL → models are very different
+
+---
+
+🎯 Why KL Divergence is Used?
+
+✔ Controls model updates
+✔ Prevents drastic changes
+✔ Maintains stability
+
+---
+
+🔗 PPO + KL Divergence Connection
+
+👉 In RLHF:
+
+* PPO updates model
+* KL Divergence ensures updates are **not too large**
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Example (Concept)
+
+Old model:
+
+```text id="y6k1qp"
+"AI is good"
+```
+
+New model:
+
+```text id="c8x3mz"
+"AI is extremely powerful and transformative"
+```
+
+👉 KL Divergence measures how different outputs are.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚔️ PPO vs Traditional RL
+
+| Feature   | Traditional RL | PPO          |
+| --------- | -------------- | ------------ |
+| Stability | Low            | High         |
+| Updates   | Large          | Controlled   |
+| Usage     | General RL     | LLM training |
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Why This Matters for LLMs
+
+✔ Improves response quality
+✔ Aligns model with human values
+✔ Prevents harmful outputs
+✔ Enables safe AI systems
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ PPO is used to fine-tune models using RL
+✔ It ensures stable and controlled learning
+✔ KL Divergence measures difference between models
+✔ PPO + KL is core in RLHF (used in ChatGPT)
+
