@@ -1,0 +1,231 @@
+Create this file in your repo:
+
+```text
+Week-5/Day-3-Fine-Tuning-LoRA-QLoRA-PEFT.md
+```
+
+Below is a **GitHub-ready Markdown note (clean + structured + interview-focused)** 👇
+
+---
+
+# 🚀 Week 5 – Day 3
+
+# Fine-Tuning: LoRA, QLoRA & PEFT 🔧🤖
+
+---
+
+# 🧠 Introduction
+
+Fine-tuning large language models (LLMs) is expensive because:
+
+* Huge number of parameters
+* High compute cost
+* Large memory requirements
+
+👉 To solve this, we use **efficient fine-tuning techniques**:
+
+* LoRA
+* QLoRA
+* PEFT
+
+---
+
+# 🔹 What is Fine-Tuning?
+
+```text
+Adapting a pre-trained model to a specific task using new data
+```
+
+---
+
+# 🎯 Why Fine-Tuning?
+
+✔ Improve model performance
+✔ Customize for domain-specific tasks
+✔ Reduce errors
+✔ Build real-world AI applications
+
+---
+
+# ⚠️ Problem with Full Fine-Tuning
+
+❌ Requires updating all parameters
+❌ Needs high GPU memory
+❌ Very expensive
+
+---
+
+# ⚡ Solution → Efficient Fine-Tuning
+
+---
+
+# 🔧 1. LoRA (Low-Rank Adaptation)
+
+LoRA is a technique that:
+
+```text
+Freezes original model weights and trains only small additional layers
+```
+
+---
+
+# 🔹 Key Idea
+
+Instead of updating full weights:
+
+👉 Add small **low-rank matrices** to the model
+
+---
+
+# 📊 Benefits of LoRA
+
+✔ Very low memory usage
+✔ Faster training
+✔ Keeps original model intact
+✔ Easy to deploy
+
+---
+
+# 🧠 How LoRA Works (Concept)
+
+```text
+Original Weight + Small Trainable Matrix → Updated Output
+```
+
+---
+
+# ⚡ 2. QLoRA (Quantized LoRA)
+
+QLoRA is an improved version of LoRA.
+
+---
+
+# 🔹 Key Idea
+
+```text
+Use quantization + LoRA to reduce memory usage even more
+```
+
+---
+
+# 📌 What is Quantization?
+
+* Convert model weights to lower precision
+* Example: 32-bit → 4-bit
+
+---
+
+# 📊 Benefits of QLoRA
+
+✔ Runs on low GPU (even 8GB)
+✔ Extremely memory efficient
+✔ Same performance as full fine-tuning
+
+---
+
+# 🔧 3. PEFT (Parameter-Efficient Fine-Tuning)
+
+PEFT is a framework that includes:
+
+* LoRA
+* Prefix tuning
+* Prompt tuning
+
+---
+
+# 🔹 Key Idea
+
+```text
+Train only small subset of parameters instead of full model
+```
+
+---
+
+# 📦 PEFT Library (Hugging Face)
+
+```bash
+pip install peft
+```
+
+---
+
+# 💻 Example: Using LoRA with PEFT
+
+```python
+from peft import LoraConfig, get_peft_model
+
+config = LoraConfig(
+    r=8,
+    lora_alpha=32,
+    target_modules=["q", "v"]
+)
+
+model = get_peft_model(model, config)
+```
+
+---
+
+# ⚔️ Comparison
+
+| Feature     | Full Fine-Tuning | LoRA  | QLoRA      |
+| ----------- | ---------------- | ----- | ---------- |
+| Memory      | High             | Low   | Very Low   |
+| Speed       | Slow             | Fast  | Faster     |
+| Cost        | Expensive        | Cheap | Very Cheap |
+| Performance | High             | High  | High       |
+
+---
+
+# 🧠 When to Use What?
+
+✔ Use **LoRA** → Limited GPU
+✔ Use **QLoRA** → Very low resources
+✔ Use **PEFT** → Flexible fine-tuning methods
+
+---
+
+# 🚀 Real-World Applications
+
+✔ Chatbots
+✔ Domain-specific AI (medical, finance)
+✔ Customer support systems
+✔ Personalized AI assistants
+
+---
+
+# 🔗 Connection to LLMs
+
+👉 Modern LLM fine-tuning (like ChatGPT customization) uses:
+
+* LoRA
+* RLHF
+* PEFT
+
+---
+
+# 📚 Key Takeaways
+
+✔ Fine-tuning adapts models for specific tasks
+✔ LoRA reduces memory by training small matrices
+✔ QLoRA uses quantization for ultra-efficiency
+✔ PEFT enables efficient parameter updates
+✔ These techniques make LLMs practical for real-world use
+
+---
+
+# 📅 Next Topic
+
+```text
+Week 5 – Day 4
+RAG (Retrieval-Augmented Generation)
+```
+
+---
+
+If you want next, I can help you with:
+
+🔥 **RAG full explanation (MOST IMPORTANT 🚀)**
+🔥 **RAG architecture + flow + code**
+🚀 **Build real-world RAG chatbot (resume project)**
+
+Now you’re learning **🔥 industry-level LLM fine-tuning 🚀**
