@@ -1,0 +1,203 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 5 – Day 6 LLM APIs: OpenAI, Hugging Face & Gemini 🔗🤖
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+LLMs can be used in real-world applications through **APIs (Application Programming Interfaces)**.
+
+👉 APIs allow you to:
+
+✔ Send input → Get AI response
+✔ Build apps without training models
+✔ Integrate AI into websites & apps
+
+---
+
+🔹 What is an API?
+
+```text id="api_def"
+Client → Request → Server (Model) → Response
+```
+
+---
+
+# 🌐 Popular LLM APIs
+
+* OpenAI API
+* Hugging Face API
+* Gemini API (Google)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤖 1. OpenAI API
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Overview
+
+The **OpenAI API** provides access to models like **GPT-4**.
+
+---
+
+🔹 Features
+
+✔ High-quality responses
+✔ Chat-based interface
+✔ Code generation
+✔ Multimodal capabilities
+
+---
+
+⚙️ Installation
+
+```bash id="openai_install"
+pip install openai
+```
+
+---
+
+💻 Example
+
+```python id="openai_example"
+from openai import OpenAI
+
+client = OpenAI(api_key="YOUR_API_KEY")
+
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "Explain AI in simple terms"}]
+)
+
+print(response.choices[0].message.content)
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤗 2. Hugging Face API
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Overview
+
+The **Hugging Face API** provides access to thousands of models from the Hub.
+
+---
+
+🔹 Features
+
+✔ Large model collection
+✔ Free & open models
+✔ Easy integration
+✔ Supports many tasks
+
+---
+
+💻 Example
+
+```python id="hf_example"
+import requests
+
+API_URL = "https://api-inference.huggingface.co/models/gpt2"
+headers = {"Authorization": "Bearer YOUR_API_KEY"}
+
+data = {"inputs": "AI is the future"}
+
+response = requests.post(API_URL, headers=headers, json=data)
+
+print(response.json())
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤖 3. Gemini API (Google)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Overview
+
+The **Google Gemini API** provides access to **Gemini** models.
+
+---
+
+🔹 Features
+
+✔ Multimodal AI
+✔ Strong reasoning
+✔ Integrated with Google services
+
+---
+
+💻 Example
+
+```python id="gemini_example"
+import google.generativeai as genai
+
+genai.configure(api_key="YOUR_API_KEY")
+
+model = genai.GenerativeModel("gemini-pro")
+
+response = model.generate_content("Explain machine learning")
+
+print(response.text)
+```
+
+---
+
+⚔️ Comparison of APIs
+
+| Feature     | OpenAI     | Hugging Face | Gemini |
+| ----------- | ---------- | ------------ | ------ |
+| Models      | GPT series | Many models  | Gemini |
+| Ease of Use | Easy       | Medium       | Easy   |
+| Flexibility | Medium     | High         | Medium |
+| Multimodal  | Yes        | Limited      | Yes    |
+
+---
+
+🔄 Typical Workflow
+
+```text id="api_flow"
+User Input → API Call → Model Processing → Response → Display Output
+```
+
+---
+
+🚀 Real-World Applications
+
+✔ Chatbots
+✔ AI assistants
+✔ Content generation apps
+✔ Customer support systems
+✔ RAG applications
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Important Considerations
+
+❌ API cost
+❌ Rate limits
+❌ Data privacy
+❌ Latency
+
+---
+
+🧠 Best Practices
+
+✔ Use caching for repeated queries
+✔ Optimize prompts
+✔ Handle API errors
+✔ Secure API keys
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ APIs make LLMs accessible without training
+✔ OpenAI provides powerful GPT models
+✔ Hugging Face offers flexibility and variety
+✔ Gemini provides multimodal capabilities
+✔ APIs are essential for real-world AI applications
+
