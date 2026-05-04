@@ -1,0 +1,192 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 6 – Day 1 Zero-Shot, One-Shot & Few-Shot Prompting 🎯🤖
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Prompting is a key technique used with LLMs like GPT-4.
+
+👉 Different prompting styles help models:
+
+✔ Understand tasks better
+✔ Improve accuracy
+✔ Generate structured outputs
+
+---
+
+🔹 What is Prompting?
+
+```text id="prompt_def2"
+Giving instructions or examples to an AI model to guide its response
+```
+
+---
+
+📊 Types of Prompting
+
+1️⃣ Zero-Shot Prompting
+2️⃣ One-Shot Prompting
+3️⃣ Few-Shot Prompting
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ 1. Zero-Shot Prompting
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Definition
+
+```text id="zero_def"
+No examples are provided to the model
+```
+
+---
+
+📌 Example
+
+```text id="zero_ex"
+Translate "Good morning" to French
+```
+
+---
+
+🎯 When to Use
+
+✔ Simple tasks
+✔ Well-known problems
+✔ Quick responses
+
+---
+
+⚠️ Limitation
+
+❌ May give less accurate results
+❌ Model may misunderstand task
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ 2. One-Shot Prompting
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Definition
+
+```text id="one_def"
+Provide one example to guide the model
+```
+
+---
+
+📌 Example
+
+```text id="one_ex"
+English: Hello → French: Bonjour  
+English: Good night →
+```
+
+---
+
+🎯 When to Use
+
+✔ Slightly complex tasks
+✔ Need guidance
+✔ Improve accuracy over zero-shot
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ 3. Few-Shot Prompting
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Definition
+
+```text id="few_def"
+Provide multiple examples to guide the model
+```
+
+---
+
+📌 Example
+
+```text id="few_ex"
+English: Hello → French: Bonjour  
+English: Thank you → French: Merci  
+English: Good night →
+```
+
+---
+
+🎯 When to Use
+
+✔ Complex tasks
+✔ Structured output needed
+✔ Higher accuracy required
+
+---
+
+📊 Comparison
+
+| Feature    | Zero-Shot   | One-Shot     | Few-Shot      |
+| ---------- | ----------- | ------------ | ------------- |
+| Examples   | 0           | 1            | Multiple      |
+| Accuracy   | Low         | Medium       | High          |
+| Complexity | Simple      | Moderate     | Complex       |
+| Use Case   | Quick tasks | Guided tasks | Complex tasks |
+
+---
+
+🧠 Key Insight
+
+```text id="insight"
+More examples → Better understanding → Better output
+```
+
+---
+
+🔧 Best Practices
+
+✔ Start with zero-shot
+✔ Add examples if needed
+✔ Use few-shot for complex tasks
+✔ Keep examples clear and relevant
+
+---
+
+🚀 Real-World Applications
+
+✔ Chatbots
+✔ Translation systems
+✔ Data extraction
+✔ Code generation
+✔ RAG pipelines
+
+---
+
+⚠️ Common Mistakes
+
+❌ Too many irrelevant examples
+❌ Poor formatting
+❌ Confusing instructions
+
+---
+
+🧠 Example (Advanced Few-Shot)
+
+```text id="adv_ex"
+Input: 2 + 2 → Output: 4  
+Input: 3 + 5 → Output: 8  
+Input: 7 + 6 →
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Zero-shot uses no examples
+✔ One-shot uses one example
+✔ Few-shot uses multiple examples
+✔ More examples improve accuracy
+✔ Essential technique in prompt engineering
+
