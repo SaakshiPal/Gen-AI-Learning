@@ -1,0 +1,212 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 6 – Day 3 Role-Based & Contextual Prompting 🎭🧠
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Large Language Models (LLMs) like GPT-4 perform better when prompts include:
+
+* Role instructions
+* Context information
+
+👉 This helps the model generate:
+
+✔ More accurate responses
+✔ Better tone/style
+✔ Task-specific outputs
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎭 1. Role-Based Prompting
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is Role-Based Prompting?
+
+```text id="role_def"
+Assigning a specific role/persona to the AI model
+```
+
+---
+
+📌 Example
+
+```text id="role_ex"
+You are a professional data scientist. Explain machine learning to a beginner.
+```
+
+---
+
+🎯 Why Use Roles?
+
+✔ Controls response style
+✔ Improves relevance
+✔ Makes outputs more specialized
+
+---
+
+🔹 Common Roles
+
+* Teacher
+* Software Engineer
+* Data Scientist
+* Interviewer
+* Doctor
+* Financial Advisor
+
+---
+
+📊 Example Comparison
+
+---
+
+❌ Normal Prompt
+
+```text id="normal_prompt"
+Explain neural networks
+```
+
+---
+
+✅ Role-Based Prompt
+
+```text id="better_prompt"
+You are an AI professor. Explain neural networks in simple terms with examples.
+```
+
+---
+
+🔥 Benefits
+
+✔ Better structured answers
+✔ Domain-specific responses
+✔ Improved consistency
+
+---
+
+⚠️ Limitation
+
+❌ Poorly defined roles may confuse model
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌍 2. Contextual Prompting
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is Contextual Prompting?
+
+```text id="context_def"
+Providing additional background information to the model
+```
+
+---
+
+📌 Example
+
+```text id="context_ex"
+Context: The user is a beginner learning Python.
+
+Explain loops in simple language.
+```
+
+---
+
+🎯 Why Context Matters?
+
+LLMs generate responses based on input context.
+
+👉 More relevant context = better output.
+
+---
+
+🔹 Types of Context
+
+* User background
+* Previous conversation
+* Task description
+* Domain-specific information
+
+---
+
+📊 Example Without Context
+
+```text id="without_context"
+Explain recursion
+```
+
+---
+
+📊 Example With Context
+
+```text id="with_context"
+The student is new to programming. Explain recursion using simple real-life examples.
+```
+
+---
+
+⚡ Combining Role + Context (Powerful 🚀)
+
+---
+
+📌 Example
+
+```text id="combined_ex"
+You are a senior software engineer.
+
+The user is preparing for coding interviews.
+
+Explain binary search with code and step-by-step explanation.
+```
+
+---
+
+🔧 Best Practices
+
+✔ Clearly define role
+✔ Provide useful context
+✔ Avoid unnecessary details
+✔ Mention output format
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Real-World Applications
+
+✔ AI tutors
+✔ Customer support bots
+✔ Coding assistants
+✔ Personalized learning systems
+✔ Enterprise AI tools
+
+---
+
+⚠️ Common Mistakes
+
+❌ Too vague role
+❌ Too much irrelevant context
+❌ Contradicting instructions
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Advanced Insight
+
+Modern AI systems combine:
+
+* Role prompting
+* Contextual prompting
+* Memory
+* RAG retrieval
+
+👉 To create highly personalized AI assistants.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Role-based prompting assigns AI a persona
+✔ Contextual prompting provides background information
+✔ Combining both improves response quality
+✔ Important for advanced AI applications
+
