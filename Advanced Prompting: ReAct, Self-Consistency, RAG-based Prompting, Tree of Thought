@@ -1,0 +1,271 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 6 – Day 4 Advanced Prompting Techniques 🤖🧠 ReAct, Self-Consistency, RAG-based Prompting & Tree of Thought
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Basic prompting is useful for simple tasks.
+
+But for complex reasoning and real-world AI systems, we use:
+
+* ReAct Prompting
+* Self-Consistency
+* RAG-based Prompting
+* Tree of Thought (ToT)
+
+👉 These techniques improve:
+
+✔ Reasoning
+✔ Accuracy
+✔ Reliability
+✔ Problem-solving ability
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 1. ReAct Prompting
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is ReAct?
+
+```text id="react_def"
+ReAct = Reasoning + Acting
+```
+
+---
+
+🔹 Key Idea
+
+The model:
+
+1️⃣ Thinks step-by-step
+2️⃣ Takes actions/tools if needed
+3️⃣ Observes results
+4️⃣ Continues reasoning
+
+---
+
+📌 Example Flow
+
+```text id="react_flow"
+Question → Thought → Action → Observation → Final Answer
+```
+
+---
+
+📊 Example
+
+```text id="react_example"
+Question: What is the capital of France?
+
+Thought: I should recall geography knowledge.  
+Action: Search memory  
+Observation: France's capital is Paris  
+
+Answer: Paris
+```
+
+---
+
+🎯 Benefits
+
+✔ Better reasoning
+✔ Tool usage support
+✔ Improved multi-step problem solving
+
+---
+
+⚠️ Limitation
+
+❌ Longer responses
+❌ More computational cost
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 2. Self-Consistency Prompting
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is Self-Consistency?
+
+```text id="self_consistency_def"
+Generate multiple reasoning paths and choose the most consistent answer
+```
+
+---
+
+🔹 Key Idea
+
+Instead of one reasoning chain:
+
+👉 Generate many reasoning chains.
+
+Then:
+
+✔ Compare answers
+✔ Select most common/best answer
+
+---
+
+📌 Example
+
+Math problem solved multiple ways:
+
+* Path 1 → Answer = 42
+* Path 2 → Answer = 42
+* Path 3 → Answer = 40
+
+👉 Final Answer = 42
+
+---
+
+🎯 Benefits
+
+✔ Reduces reasoning errors
+✔ Improves reliability
+✔ Better for complex tasks
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 3. RAG-based Prompting
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is RAG?
+
+```text id="rag_prompt_def"
+Retrieval-Augmented Generation combines retrieval + LLM generation
+```
+
+---
+
+🔹 Key Idea
+
+Instead of relying only on model memory:
+
+👉 Retrieve external information first.
+
+---
+
+📌 Workflow
+
+```text id="rag_flow"
+User Query → Retrieve Documents → Add Context → Generate Answer
+```
+
+---
+
+📊 Example
+
+Question:
+
+```text id="rag_example"
+"What are the latest AI trends?"
+```
+
+👉 System retrieves latest articles before generating response.
+
+---
+
+🎯 Benefits
+
+✔ Up-to-date information
+✔ Reduced hallucinations
+✔ Better factual accuracy
+
+---
+
+🚀 Applications
+
+✔ AI search engines
+✔ Enterprise chatbots
+✔ Document QA systems
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌳 4. Tree of Thought (ToT)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is Tree of Thought?
+
+```text id="tot_def"
+Explore multiple reasoning branches before selecting best solution
+```
+
+---
+
+🔹 Key Idea
+
+Instead of one reasoning path:
+
+👉 Explore multiple possible thoughts like a tree.
+
+---
+
+📌 Example
+
+Problem:
+
+```text id="tot_example"
+Find best strategy for solving puzzle
+```
+
+Possible branches:
+
+* Strategy A
+* Strategy B
+* Strategy C
+
+Choose best branch.
+
+---
+
+🎯 Benefits
+
+✔ Better decision making
+✔ Improved planning
+✔ Handles complex reasoning tasks
+
+---
+
+⚠️ Limitation
+
+❌ Higher compute cost
+❌ Slower inference
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚔️ Comparison
+
+| Technique        | Purpose                    | Best Use          |
+| ---------------- | -------------------------- | ----------------- |
+| ReAct            | Reason + action            | Tool-based AI     |
+| Self-Consistency | Multiple reasoning paths   | Math & logic      |
+| RAG              | Retrieve external info     | Knowledge systems |
+| Tree of Thought  | Explore reasoning branches | Complex planning  |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Importance
+
+These techniques are used in:
+
+* AI agents
+* Advanced chatbots
+* Research assistants
+* Autonomous systems
+* Enterprise AI platforms
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Advanced prompting improves reasoning quality
+✔ ReAct combines reasoning + actions
+✔ Self-consistency improves reliability
+✔ RAG adds external knowledge
+✔ Tree of Thought explores multiple solutions
+
