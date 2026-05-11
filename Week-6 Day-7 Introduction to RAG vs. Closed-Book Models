@@ -1,0 +1,200 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 6 – Day 7 Introduction to RAG vs Closed-Book Models 📚🤖
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Large Language Models (LLMs) can answer questions in two main ways:
+
+1️⃣ Closed-Book Models
+2️⃣ RAG (Retrieval-Augmented Generation)
+
+Understanding this difference is **one of the most important concepts in modern AI**.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📕 1. What are Closed-Book Models?
+
+A **Closed-Book Model** answers questions using only the knowledge stored in its parameters.
+
+👉 It does **not retrieve external documents** at runtime.
+
+---
+
+🔹 How It Works
+
+```text id="closed_book_flow"
+User Question → LLM Internal Knowledge → Answer
+```
+
+---
+
+📌 Example
+
+Question:
+
+```text id="closed_book_ex"
+What is the capital of France?
+```
+
+Answer:
+
+```text id="closed_book_ans"
+Paris
+```
+
+---
+
+✅ Advantages
+
+✔ Very fast responses
+✔ No external database needed
+✔ Simple architecture
+
+---
+
+⚠️ Limitations
+
+❌ Knowledge can become outdated
+❌ May hallucinate incorrect facts
+❌ Cannot access private company documents
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 2. What is RAG (Retrieval-Augmented Generation)?
+
+RAG combines:
+
+* Retrieval (search relevant documents)
+* Generation (LLM creates final answer)
+
+👉 The model first retrieves external information, then generates a response.
+
+---
+
+🔹 How RAG Works
+
+```text id="rag_flow_intro"
+User Question → Retrieve Documents → Add Context → LLM Generates Answer
+```
+
+---
+
+📌 Example
+
+Question:
+
+```text id="rag_ex"
+What are the latest AI trends in 2026?
+```
+
+RAG retrieves recent articles and then generates an answer based on those documents.
+
+---
+
+✅ Advantages of RAG
+
+✔ Uses up-to-date information
+✔ Reduces hallucinations
+✔ Can answer using private documents (PDFs, manuals, policies)
+✔ No need to retrain the model for every new document
+
+---
+
+⚠️ Limitations of RAG
+
+❌ Requires vector database or search system
+❌ Retrieval quality affects final answer
+❌ Slightly higher latency
+
+---
+
+⚔️ Closed-Book vs RAG
+
+| Feature                | Closed-Book Model | RAG         |
+| ---------------------- | ----------------- | ----------- |
+| External Knowledge     | ❌ No              | ✅ Yes       |
+| Up-to-Date Information | ❌ No              | ✅ Yes       |
+| Private Documents      | ❌ No              | ✅ Yes       |
+| Hallucination Risk     | Higher            | Lower       |
+| Complexity             | Low               | Medium/High |
+| Cost                   | Lower             | Higher      |
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Example
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📕 Closed-Book
+
+Question:
+
+```text id="cb_real"
+What is our company's leave policy?
+```
+
+❌ Model does not know unless it was trained on that policy.
+
+---
+
+📚 RAG
+
+Question:
+
+```text id="rag_real"
+What is our company's leave policy?
+```
+
+✅ System retrieves HR documents and answers accurately.
+
+---
+
+🏢 Where RAG is Used
+
+✔ Enterprise document chatbots
+✔ Legal assistants
+✔ Medical question answering
+✔ Customer support bots
+✔ Research assistants
+
+---
+
+🔄 RAG Architecture Overview
+
+```text id="rag_arch_overview"
+Documents → Embeddings → Vector Database
+                         ↓
+User Query → Query Embedding → Similarity Search
+                         ↓
+Retrieved Context → LLM → Final Answer
+```
+
+---
+
+🌟 Why RAG is Important
+
+RAG is the foundation of many production AI systems because it allows LLMs to:
+
+* Access current information
+* Use proprietary knowledge
+* Provide more trustworthy answers
+
+---
+
+🧠 Interview Answer (Simple)
+
+> **Closed-book models answer from what they learned during training, while RAG first retrieves relevant external documents and then uses the LLM to generate a grounded answer.**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Closed-book models rely only on internal parameters
+✔ RAG combines retrieval + generation
+✔ RAG enables up-to-date and document-based answers
+✔ RAG reduces hallucinations
+✔ RAG is widely used in real-world AI applications
+
