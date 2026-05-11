@@ -1,0 +1,229 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 7 – Day 1 RAG Architecture: Retriever, Chunking & Generator 📚🤖
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+**RAG (Retrieval-Augmented Generation)** combines:
+
+* 🔍 Retrieval of relevant documents
+* 🤖 Generation of answers using an LLM
+
+It allows AI systems to answer questions using:
+
+✔ Up-to-date information
+✔ Private company documents
+✔ PDFs, websites, manuals, and databases
+
+---
+
+🏗️ High-Level RAG Architecture
+
+```text id="rag_arch"
+Documents → Chunking → Embeddings → Vector Database
+                                       ↓
+User Query → Query Embedding → Retriever
+                                       ↓
+Retrieved Chunks → Prompt + Context → LLM Generator
+                                       ↓
+Final Answer
+```
+
+---
+
+📄 Step 1: Document Ingestion
+
+RAG starts with source documents such as:
+
+* PDF files
+* Word documents
+* Websites
+* Databases
+* FAQs
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✂️ Step 2: Chunking
+
+---
+
+🔹 What is Chunking?
+
+```text id="chunking_def"
+Splitting large documents into smaller pieces called chunks
+```
+
+---
+
+🔹 Why Chunking is Important
+
+✔ Fits within model context limits
+✔ Improves retrieval accuracy
+✔ Reduces irrelevant information
+
+---
+
+📌 Example
+
+Document:
+
+```text id="chunk_example"
+This is a 50-page company policy manual.
+```
+
+Chunked into:
+
+* Chunk 1: Leave Policy
+* Chunk 2: Work From Home Policy
+* Chunk 3: Benefits Policy
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Chunking Strategies
+
+* Fixed-size chunking
+* Recursive chunking
+* Semantic chunking
+* Sliding window chunking
+
+---
+
+📏 Typical Chunk Settings
+
+* Chunk Size: 300–1000 tokens
+* Overlap: 50–200 tokens
+
+---
+
+🔢 Step 3: Embeddings
+
+Each chunk is converted into a numeric vector.
+
+```text id="embedding_def"
+Text Chunk → Embedding Vector
+```
+
+Embeddings capture semantic meaning.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🗂️ Step 4: Vector Database
+
+Embeddings are stored in a vector database such as:
+
+* Chroma
+* Pinecone
+* Weaviate
+* Milvus
+
+---
+
+🔍 Step 5: Retriever
+
+---
+
+🔹 What is a Retriever?
+
+```text id="retriever_def"
+Searches the vector database to find the most relevant chunks
+```
+
+---
+
+🔹 Retrieval Process
+
+1️⃣ Convert user query to embedding
+2️⃣ Compare with stored embeddings
+3️⃣ Return top-k most similar chunks
+
+---
+
+📌 Example
+
+Question:
+
+```text id="retriever_ex"
+"What is the company's maternity leave policy?"
+```
+
+Retriever returns chunks containing leave policy details.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤖 Step 6: Generator (LLM)
+
+The retrieved chunks are added to the prompt and sent to the LLM.
+
+```text id="generator_def"
+Context + User Question → LLM → Final Answer
+```
+
+---
+
+📝 Example Prompt
+
+```text id="prompt_example"
+Context:
+[Retrieved policy text]
+
+Question:
+What is the maternity leave policy?
+
+Answer:
+```
+
+---
+
+📤 Step 7: Final Response
+
+The LLM generates a grounded answer based on retrieved context.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚔️ Retriever vs Generator
+
+| Component | Purpose                                |
+| --------- | -------------------------------------- |
+| Retriever | Finds relevant chunks                  |
+| Generator | Produces final natural language answer |
+
+---
+
+🎯 Why Chunking Matters
+
+Poor chunking can lead to:
+
+❌ Missing relevant information
+❌ Incomplete answers
+❌ Increased hallucinations
+
+Good chunking improves retrieval quality significantly.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Real-World Applications
+
+✔ PDF chatbots
+✔ Internal knowledge assistants
+✔ Legal document search
+✔ Customer support systems
+✔ Research assistants
+
+---
+
+🧠 Interview Answer (Simple)
+
+> In a RAG system, documents are split into chunks, converted into embeddings, stored in a vector database, retrieved based on similarity to the query, and then passed to an LLM to generate the final answer.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ RAG = Retrieval + Generation
+✔ Chunking splits documents into smaller pieces
+✔ Retriever finds relevant chunks
+✔ Generator creates final answer using context
+✔ Core architecture for production AI systems
+
