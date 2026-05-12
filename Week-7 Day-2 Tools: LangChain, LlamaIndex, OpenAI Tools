@@ -1,0 +1,197 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 7 – Day 2 Tools for Building LLM Applications 🛠️🤖
+
+LangChain, LlamaIndex & OpenAI Tools
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Building LLM applications from scratch can be complex.
+
+Popular frameworks simplify development by providing:
+
+* Document loading
+* Chunking
+* Embeddings
+* Retrieval
+* Tool calling
+* Agent workflows
+
+The most widely used tools are:
+
+* LangChain
+* LlamaIndex
+* OpenAI Tools (function/tool calling)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔗 1. LangChain
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is LangChain?
+
+```text id="langchain_def"
+A framework for building LLM-powered applications
+```
+
+---
+
+🔹 Key Features
+
+✔ Prompt templates
+✔ Chains and pipelines
+✔ Memory
+✔ Agents
+✔ Tool integration
+✔ RAG support
+
+---
+
+🔹 Core Components
+
+* Document Loaders
+* Text Splitters
+* Embedding Models
+* Vector Stores
+* Retrievers
+* Chains
+* Agents
+
+---
+
+💻 Example
+
+```python id="langchain_example"
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI(model="gpt-4")
+response = llm.invoke("Explain RAG in simple terms")
+print(response.content)
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 2. LlamaIndex
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is LlamaIndex?
+
+```text id="llamaindex_def"
+A framework for connecting private data to LLMs
+```
+
+---
+
+🔹 Key Features
+
+✔ Data ingestion
+✔ Index creation
+✔ Query engines
+✔ RAG pipelines
+✔ Document chat
+
+---
+
+💻 Example
+
+```python id="llamaindex_example"
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+
+documents = SimpleDirectoryReader("data").load_data()
+index = VectorStoreIndex.from_documents(documents)
+
+query_engine = index.as_query_engine()
+response = query_engine.query("Summarize the documents")
+print(response)
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🛠️ 3. OpenAI Tools (Function Calling)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What are Tools?
+
+```text id="tools_def"
+Functions the model can call to perform external actions
+```
+
+---
+
+🔹 Examples of Tool Usage
+
+* Search database
+* Fetch weather
+* Query APIs
+* Perform calculations
+
+---
+
+💻 Conceptual Example
+
+```python id="tools_example"
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "get_weather",
+            "description": "Get current weather"
+        }
+    }
+]
+```
+
+---
+
+⚔️ LangChain vs LlamaIndex
+
+| Feature        | LangChain        | LlamaIndex                    |
+| -------------- | ---------------- | ----------------------------- |
+| Focus          | General LLM apps | Data/RAG applications         |
+| Agents         | Strong support   | Limited                       |
+| RAG            | Excellent        | Excellent                     |
+| Learning Curve | Moderate         | Easier for data-centric tasks |
+
+---
+
+🔗 How They Work Together
+
+A common architecture:
+
+```text id="combined_flow"
+LlamaIndex (Data Layer) + LangChain (Workflow Layer) + OpenAI Tools (External Actions)
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Real-World Applications
+
+✔ PDF chatbots
+✔ Enterprise knowledge assistants
+✔ AI agents
+✔ Customer support systems
+✔ Automated research tools
+
+---
+
+🧠 When to Use What?
+
+✔ Use LangChain → Complex workflows and agents
+✔ Use LlamaIndex → Document-centric RAG systems
+✔ Use OpenAI Tools → Integrating APIs and functions
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ LangChain builds end-to-end LLM applications
+✔ LlamaIndex specializes in data ingestion and RAG
+✔ OpenAI Tools enable function/tool calling
+✔ These tools accelerate development of production AI systems
+
+
