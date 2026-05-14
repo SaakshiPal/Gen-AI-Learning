@@ -1,0 +1,308 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 7 – Day 3 Embeddings: OpenAI, Cohere, Hugging Face & MTEB Leaderboard 🔢🧠
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Embeddings are one of the most important concepts in:
+
+* RAG (Retrieval-Augmented Generation)
+* Semantic Search
+* Recommendation Systems
+* Document Similarity
+* Clustering
+
+👉 They convert text into numerical vectors that capture meaning.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is an Embedding?
+
+```text id="embedding_def"
+A dense numerical vector representation of text that captures semantic meaning
+```
+
+---
+
+📌 Example
+
+Text:
+
+```text id="embed_example"
+"Artificial Intelligence is transforming the world."
+```
+
+Embedding (simplified):
+
+```text id="embed_vector"
+[0.12, -0.87, 0.45, ...]
+```
+
+---
+
+🧠 Why Embeddings are Important
+
+Words and sentences with similar meanings produce similar vectors.
+
+### Example
+
+* "What is AI?"
+* "Explain Artificial Intelligence"
+
+👉 Their embeddings will be very close.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📐 Embedding Dimensions
+
+Typical vector sizes:
+
+* 384 dimensions
+* 768 dimensions
+* 1024 dimensions
+* 1536 dimensions
+* 3072 dimensions
+
+More dimensions can capture richer information, but require more storage and compute.
+
+---
+
+🔍 Similarity Search
+
+Embeddings are compared using:
+
+* Cosine Similarity
+* Dot Product
+* Euclidean Distance
+
+---
+
+📌 Cosine Similarity
+
+```text id="cosine_similarity"
+Measures how similar two vectors are (range: -1 to 1)
+```
+
+Higher similarity → more semantically related.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤖 Popular Embedding Providers
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1️⃣ [OpenAI](https://openai.com?utm_source=chatgpt.com) Embeddings
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Overview
+
+OpenAI provides high-quality embedding models widely used in production RAG systems.
+
+---
+
+🔹 Features
+
+✔ Strong semantic understanding
+✔ Excellent multilingual performance
+✔ Easy API integration
+✔ Production-ready quality
+
+---
+
+💻 Example
+
+```python id="openai_embed"
+from openai import OpenAI
+
+client = OpenAI(api_key="YOUR_API_KEY")
+
+response = client.embeddings.create(
+    model="text-embedding-3-small",
+    input="What is machine learning?"
+)
+
+embedding = response.data[0].embedding
+print(len(embedding))
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2️⃣ [Cohere](https://cohere.com?utm_source=chatgpt.com) Embeddings
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Overview
+
+Cohere offers powerful embedding models optimized for retrieval and enterprise search.
+
+---
+
+🔹 Features
+
+✔ Strong retrieval performance
+✔ Multilingual support
+✔ Enterprise-focused APIs
+
+---
+
+💻 Example
+
+```python id="cohere_embed"
+import cohere
+
+co = cohere.Client("YOUR_API_KEY")
+
+response = co.embed(
+    texts=["What is artificial intelligence?"],
+    model="embed-english-v3.0"
+)
+
+embedding = response.embeddings[0]
+print(len(embedding))
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3️⃣ [Hugging Face](https://huggingface.co?utm_source=chatgpt.com) Embeddings
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Overview
+
+Hugging Face provides many open-source embedding models.
+
+Popular models include:
+
+* sentence-transformers/all-MiniLM-L6-v2
+* BAAI/bge-small-en
+* intfloat/e5-large-v2
+
+---
+
+💻 Example
+
+```python id="hf_embed"
+from sentence_transformers import SentenceTransformer
+
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+embedding = model.encode("What is deep learning?")
+print(len(embedding))
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🏆 MTEB Leaderboard
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is MTEB?
+
+```text id="mteb_def"
+Massive Text Embedding Benchmark
+```
+
+MTEB is a standard benchmark used to evaluate embedding models.
+
+---
+
+🔹 Tasks Evaluated
+
+* Retrieval
+* Classification
+* Clustering
+* Reranking
+* Semantic Similarity
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Why MTEB Matters
+
+✔ Helps compare embedding quality
+✔ Guides model selection
+✔ Widely used in industry and research
+
+---
+
+📊 How to Choose an Embedding Model
+
+Consider:
+
+* Accuracy
+* Speed
+* Cost
+* Multilingual support
+* Open-source availability
+* Vector dimension size
+
+---
+
+⚔️ OpenAI vs Cohere vs Hugging Face
+
+| Feature       | OpenAI    | Cohere    | Hugging Face   |
+| ------------- | --------- | --------- | -------------- |
+| Type          | API-based | API-based | Open-source    |
+| Setup         | Easy      | Easy      | Flexible       |
+| Cost          | Paid      | Paid      | Often free     |
+| Customization | Limited   | Limited   | High           |
+| Deployment    | Cloud     | Cloud     | Local or cloud |
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Best Use Cases
+
+OpenAI
+
+* Production RAG systems
+* General-purpose semantic search
+
+Cohere
+
+* Enterprise search
+* Retrieval-heavy applications
+
+Hugging Face
+
+* Local deployment
+* Open-source projects
+* Fine-tuning
+
+---
+
+🗂️ Embeddings in RAG
+
+```text id="rag_embedding_flow"
+Documents → Embeddings → Vector Database
+Query → Query Embedding → Similarity Search
+Retrieved Chunks → LLM → Final Answer
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Real-World Applications
+
+✔ PDF Chatbots
+✔ Semantic Search Engines
+✔ Recommendation Systems
+✔ FAQ Assistants
+✔ Enterprise Knowledge Bases
+
+---
+
+🧠 Interview Answer (Simple)
+
+> Embeddings convert text into numerical vectors that capture semantic meaning. In RAG systems, both documents and user queries are converted into embeddings, and similarity search is used to retrieve the most relevant information.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Embeddings represent text as dense vectors
+✔ Similar meaning → similar vectors
+✔ OpenAI, Cohere, and Hugging Face are popular providers
+✔ MTEB is the leading benchmark for embedding models
+✔ Embeddings are the foundation of RAG and semantic search
+
