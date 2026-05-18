@@ -1,0 +1,211 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 7 – Day 5 Project: Multi-PDF Chatbot 📄🤖
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Project Overview
+
+Build a chatbot that can answer questions from **multiple PDF documents** using **RAG (Retrieval-Augmented Generation)**.
+
+Users can upload several PDFs, and the chatbot will:
+
+✔ Extract text
+✔ Split documents into chunks
+✔ Generate embeddings
+✔ Store vectors in a vector database
+✔ Retrieve relevant chunks
+✔ Generate grounded answers using an LLM
+
+---
+
+🎯 Project Objectives
+
+* Understand end-to-end RAG pipeline
+* Work with multiple documents
+* Build a real-world AI application
+* Create a strong portfolio project
+
+---
+
+🛠️ Tech Stack
+
+* Python
+* LangChain
+* Chroma
+* OpenAI or open-source LLM
+* Streamlit
+* PyPDF2
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🏗️ Architecture
+
+```text id="project_arch"
+Upload PDFs → Extract Text → Chunking → Embeddings
+           → Vector Store → Retriever → LLM → Answer
+```
+
+---
+
+📂 Suggested Project Structure
+
+```text id="project_structure"
+multi-pdf-chatbot/
+├── app.py
+├── requirements.txt
+├── .env
+├── data/
+├── utils/
+│   ├── pdf_loader.py
+│   ├── chunking.py
+│   ├── embeddings.py
+│   └── rag_pipeline.py
+└── README.md
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Step 1: Install Dependencies
+
+```bash id="install_deps"
+pip install streamlit langchain chromadb pypdf python-dotenv openai
+```
+
+---
+
+📄 Step 2: Load Multiple PDFs
+
+```python id="load_pdfs"
+from langchain.document_loaders import PyPDFLoader
+
+documents = []
+
+for file in pdf_files:
+    loader = PyPDFLoader(file)
+    documents.extend(loader.load())
+```
+
+---
+
+✂️ Step 3: Chunk Documents
+
+```python id="chunk_docs"
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200
+)
+
+chunks = splitter.split_documents(documents)
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔢 Step 4: Create Embeddings
+
+```python id="create_embeddings"
+from langchain_openai import OpenAIEmbeddings
+
+embeddings = OpenAIEmbeddings()
+```
+
+---
+
+🗂️ Step 5: Store in ChromaDB
+
+```python id="vector_store"
+from langchain.vectorstores import Chroma
+
+vector_store = Chroma.from_documents(
+    documents=chunks,
+    embedding=embeddings
+)
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔍 Step 6: Create Retriever
+
+```python id="retriever_code"
+retriever = vector_store.as_retriever(search_kwargs={"k": 4})
+```
+
+---
+
+🤖 Step 7: Generate Answers
+
+```python id="qa_chain"
+from langchain.chains import RetrievalQA
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI(model="gpt-4")
+
+qa_chain = RetrievalQA.from_chain_type(
+    llm=llm,
+    retriever=retriever
+)
+
+response = qa_chain.run("Summarize the key points.")
+print(response)
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌐 Step 8: Build Streamlit Interface
+
+```python id="streamlit_ui"
+import streamlit as st
+
+st.title("📄 Multi-PDF Chatbot")
+
+question = st.text_input("Ask a question")
+
+if question:
+    answer = qa_chain.run(question)
+    st.write(answer)
+```
+
+---
+
+🚀 Features You Can Add
+
+🔥 Source citations
+🔥 Conversation history
+🔥 PDF upload from UI
+🔥 Local open-source models
+🔥 Authentication
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧪 Sample Questions
+
+* "Summarize all uploaded documents."
+* "What are the main findings?"
+* "Compare information across PDFs."
+
+---
+
+🌍 Real-World Use Cases
+
+✔ Research assistants
+✔ Contract analysis
+✔ HR policy chatbots
+✔ Educational assistants
+✔ Legal document search
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📈 Resume Description
+
+> Developed a Multi-PDF Chatbot using RAG, LangChain, ChromaDB, and OpenAI APIs to enable question answering across multiple uploaded PDF documents with source-grounded responses.
+
+---
+
+📚 Key Takeaways
+
+✔ Multi-document RAG is a real production use case
+✔ Combines document loading, chunking, embeddings, retrieval, and generation
+✔ Excellent portfolio project for AI/LLM roles
+
