@@ -1,0 +1,193 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 7 – Day 6 Document Loaders: PDF, CSV & URLs 📄🌐📊
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Before building a RAG system, you need to ingest data from different sources.
+
+👉 **Document Loaders** convert raw files and web content into structured documents that LLM frameworks can process.
+
+Common sources:
+
+* PDF files
+* CSV files
+* Web pages (URLs)
+* Word documents
+* Text files
+
+---
+
+🔹 What is a Document Loader?
+
+```text id="loader_def"
+A component that reads data from a source and converts it into documents
+```
+
+Each document typically contains:
+
+* `page_content` → actual text
+* `metadata` → source information (file name, page number, URL)
+
+---
+
+🧱 Why Document Loaders Matter
+
+✔ Standardize different data sources
+✔ Preserve metadata
+✔ Simplify ingestion pipelines
+✔ Enable multi-source RAG systems
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📄 1. PDF Loader
+
+PDF loaders extract text from PDF documents.
+
+Popular loaders in LangChain include:
+
+* PyPDFLoader
+* PDFPlumberLoader
+* UnstructuredPDFLoader
+
+---
+
+💻 Example: Load PDF
+
+```python id="pdf_loader_example"
+from langchain.document_loaders import PyPDFLoader
+
+loader = PyPDFLoader("report.pdf")
+documents = loader.load()
+
+print(documents[0].page_content)
+print(documents[0].metadata)
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 2. CSV Loader
+
+CSV loaders read tabular data.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💻 Example: Load CSV
+
+```python id="csv_loader_example"
+from langchain.document_loaders import CSVLoader
+
+loader = CSVLoader("employees.csv")
+documents = loader.load()
+
+print(documents[0].page_content)
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌐 3. URL Loader
+
+URL loaders fetch content from web pages.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💻 Example: Load Web Page
+
+```python id="url_loader_example"
+from langchain.document_loaders import WebBaseLoader
+
+loader = WebBaseLoader("https://example.com")
+documents = loader.load()
+
+print(documents[0].page_content[:500])
+```
+
+---
+
+📁 Other Useful Loaders
+
+* TextLoader (`.txt`)
+* Docx2txtLoader (`.docx`)
+* JSONLoader (`.json`)
+* DirectoryLoader (load all files in a folder)
+
+---
+
+📂 Example: Load All Files in a Directory
+
+```python id="directory_loader"
+from langchain.document_loaders import DirectoryLoader
+
+loader = DirectoryLoader("data/")
+documents = loader.load()
+```
+
+---
+
+# 🧾 Document Object Structure
+
+```python id="document_structure"
+Document(
+    page_content="Actual text",
+    metadata={
+        "source": "report.pdf",
+        "page": 2
+    }
+)
+```
+
+---
+
+🗂️ Multi-Source RAG Pipeline
+
+```text id="multi_source_flow"
+PDF + CSV + URLs → Document Loaders → Chunking → Embeddings → Vector Store → LLM
+```
+
+---
+
+🧠 Metadata Importance
+
+Metadata helps:
+
+✔ Show source citations
+✔ Filter documents
+✔ Trace where answers came from
+
+---
+
+🎯 Best Practices
+
+✔ Clean noisy text after loading
+✔ Preserve metadata
+✔ Validate extraction quality
+✔ Handle encoding issues
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Challenges
+
+❌ Scanned PDFs may require OCR
+❌ Dynamic websites may need special loaders
+❌ Large CSV files may need preprocessing
+
+---
+
+🌍 Real-World Applications
+
+✔ Multi-PDF chatbots
+✔ Website QA assistants
+✔ Business analytics assistants
+✔ Research tools
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Document loaders ingest data from PDFs, CSVs, and URLs
+✔ They convert content into standardized Document objects
+✔ Metadata is critical for citations and filtering
+✔ Document loaders are the first step in RAG pipelines
+
