@@ -1,0 +1,252 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 7 – Day 7 Chunking Strategies: Recursive, Fixed & Semantic ✂️📄
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Large documents are often too big to send directly to an LLM.
+
+👉 **Chunking** is the process of splitting documents into smaller pieces.
+
+Chunking is one of the most important steps in a RAG pipeline because it directly affects retrieval quality.
+
+---
+
+🔹 What is Chunking?
+
+```text id="chunking_def2"
+Breaking a large document into smaller chunks for embedding and retrieval
+```
+
+---
+
+🎯 Why Chunking is Important
+
+✔ Fits within context limits
+✔ Improves retrieval precision
+✔ Reduces irrelevant information
+✔ Lowers token cost
+
+---
+
+🧱 Chunk Size and Overlap
+
+Typical settings:
+
+* Chunk Size: 300–1000 tokens
+* Chunk Overlap: 50–200 tokens
+
+Why Overlap?
+
+Overlap preserves context across chunk boundaries.
+
+---
+
+📌 Example
+
+Original text:
+
+```text id="chunk_text"
+Artificial Intelligence is transforming industries by automating tasks and improving decision-making.
+```
+
+Chunks:
+
+* Chunk 1: Artificial Intelligence is transforming industries...
+* Chunk 2: ...automating tasks and improving decision-making.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 1. Fixed-Size Chunking
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 Definition
+
+```text id="fixed_def"
+Split text into chunks of a fixed number of characters or tokens
+```
+
+---
+
+✅ Advantages
+
+✔ Simple to implement
+✔ Fast processing
+
+---
+
+⚠️ Limitations
+
+❌ May cut sentences in the middle
+❌ Can reduce semantic coherence
+
+---
+
+💻 Example
+
+```python id="fixed_example"
+from langchain.text_splitter import CharacterTextSplitter
+
+splitter = CharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200
+)
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 2. Recursive Chunking
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 Definition
+
+```text id="recursive_def"
+Split text using a hierarchy of separators (paragraphs → sentences → words)
+```
+
+---
+
+🧠 How It Works
+
+The splitter tries separators in order:
+
+1. Paragraphs (`\n\n`)
+2. Lines (`\n`)
+3. Sentences / spaces
+4. Characters
+
+---
+
+✅ Advantages
+
+✔ Preserves natural structure
+✔ Maintains better context
+✔ Most commonly used in RAG
+
+---
+
+💻 Example
+
+```python id="recursive_example"
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200
+)
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 3. Semantic Chunking
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 Definition
+
+```text id="semantic_def"
+Split text based on meaning rather than fixed length
+```
+
+---
+
+🧠 How It Works
+
+* Compute embeddings for sentences
+* Measure semantic similarity
+* Group related sentences together
+
+---
+
+✅ Advantages
+
+✔ High semantic coherence
+✔ Better retrieval quality
+
+---
+
+⚠️ Limitations
+
+❌ Slower
+❌ More computationally expensive
+
+---
+
+⚔️ Comparison Table
+
+| Strategy   | Preserves Meaning | Speed  | Complexity | Best For              |
+| ---------- | ----------------- | ------ | ---------- | --------------------- |
+| Fixed-Size | Low               | Fast   | Easy       | Simple projects       |
+| Recursive  | High              | Fast   | Moderate   | Most RAG systems      |
+| Semantic   | Very High         | Slower | Advanced   | High-accuracy systems |
+
+---
+
+🎯 Which Strategy Should You Use?
+
+Beginners
+
+* Use Recursive Chunking
+
+High Accuracy Applications
+
+* Use Semantic Chunking
+
+Simple Experiments
+
+* Use Fixed-Size Chunking
+
+---
+
+🗂️ Role in RAG
+
+```text id="chunking_rag_flow"
+Documents → Chunking → Embeddings → Vector Store → Retrieval → LLM
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔧 Best Practices
+
+✔ Start with recursive chunking
+✔ Use overlap to preserve context
+✔ Tune chunk size experimentally
+✔ Keep chunks semantically meaningful
+
+---
+
+⚠️ Common Mistakes
+
+❌ Chunks too small → insufficient context
+❌ Chunks too large → noisy retrieval
+❌ No overlap → broken context
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌍 Real-World Applications
+
+✔ PDF Chatbots
+✔ Enterprise Knowledge Assistants
+✔ Legal Search
+✔ Research Tools
+
+---
+
+🧠 Interview Answer (Simple)
+
+> Chunking splits large documents into smaller pieces for embedding and retrieval. Recursive chunking is the most common approach because it preserves document structure while maintaining manageable chunk sizes.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Chunking is critical for RAG quality
+✔ Fixed-size is simple but less semantic
+✔ Recursive chunking is the most commonly used approach
+✔ Semantic chunking offers the best coherence
+✔ Chunk size and overlap require experimentation
+
