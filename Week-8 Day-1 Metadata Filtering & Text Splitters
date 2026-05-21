@@ -1,0 +1,280 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 8 – Day 1 Metadata Filtering & Text Splitters 🗂️✂️
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+In RAG systems, simply storing embeddings is not enough.
+
+To improve retrieval quality, we use:
+
+* Metadata Filtering
+* Text Splitters
+
+These help in:
+
+✔ Better search accuracy
+✔ Faster retrieval
+✔ More relevant responses
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🗂️ 1. Metadata Filtering
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is Metadata?
+
+```text id="metadata_def"
+Additional information stored along with documents or chunks
+```
+
+---
+
+📌 Examples of Metadata
+
+* File name
+* Page number
+* Author
+* Source URL
+* Document category
+* Date created
+
+---
+
+🧾 Example Metadata
+
+```python id="metadata_example"
+{
+    "source": "policy.pdf",
+    "page": 5,
+    "department": "HR"
+}
+```
+
+---
+
+🔍 What is Metadata Filtering?
+
+```text id="metadata_filter_def"
+Retrieving documents based on metadata conditions
+```
+
+---
+
+📌 Example
+
+Question:
+
+```text id="metadata_question"
+"Show HR policies only"
+```
+
+Filter:
+
+```python id="metadata_filter_code"
+filter = {"department": "HR"}
+```
+
+---
+
+🎯 Why Metadata Filtering Matters
+
+✔ Improves retrieval relevance
+✔ Reduces search space
+✔ Enables document categorization
+✔ Supports multi-user systems
+
+---
+
+🧠 Real-World Example
+
+A company chatbot may retrieve:
+
+* HR documents for employees
+* Finance documents for accounting team
+
+using metadata filters.
+
+---
+
+💻 Example with ChromaDB
+
+```python id="chroma_filter"
+results = collection.query(
+    query_texts=["leave policy"],
+    where={"department": "HR"}
+)
+```
+
+---
+
+⚠️ Common Metadata Fields
+
+| Field     | Purpose               |
+| --------- | --------------------- |
+| source    | Track document origin |
+| page      | Identify page number  |
+| category  | Group documents       |
+| timestamp | Time-based filtering  |
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✂️ 2. Text Splitters
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is a Text Splitter?
+
+```text id="splitter_def"
+A tool that divides large text into smaller chunks
+```
+
+---
+
+🎯 Why Text Splitters are Needed
+
+✔ LLM context windows are limited
+✔ Smaller chunks improve retrieval
+✔ Easier embedding generation
+
+---
+
+🔹 Popular Text Splitters in LangChain
+
+* CharacterTextSplitter
+* RecursiveCharacterTextSplitter
+* TokenTextSplitter
+* MarkdownHeaderTextSplitter
+
+---
+
+📘 CharacterTextSplitter
+
+Splits based on character count.
+
+---
+
+💻 Example
+
+```python id="character_splitter"
+from langchain.text_splitter import CharacterTextSplitter
+
+splitter = CharacterTextSplitter(
+    chunk_size=500,
+    chunk_overlap=50
+)
+
+chunks = splitter.split_text(text)
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 RecursiveCharacterTextSplitter
+
+Most commonly used splitter.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 How It Works
+
+Tries separators in order:
+
+1. Paragraphs
+2. Lines
+3. Spaces
+4. Characters
+
+---
+
+💻 Example
+
+```python id="recursive_splitter"
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200
+)
+```
+
+---
+
+📘 TokenTextSplitter
+
+Splits based on token count instead of characters.
+
+Useful because LLMs process tokens.
+
+---
+
+📘 MarkdownHeaderTextSplitter
+
+Specialized for Markdown documents.
+
+Preserves headings and sections.
+
+---
+
+⚔️ Comparison of Splitters
+
+| Splitter                       | Best For             |
+| ------------------------------ | -------------------- |
+| CharacterTextSplitter          | Simple text          |
+| RecursiveCharacterTextSplitter | General RAG systems  |
+| TokenTextSplitter              | Token-aware chunking |
+| MarkdownHeaderTextSplitter     | Markdown docs        |
+
+---
+
+🔄 Workflow in RAG
+
+```text id="rag_splitter_flow"
+Documents → Text Splitter → Chunks → Embeddings → Vector Store
+```
+
+---
+
+🔧 Best Practices
+
+✔ Use overlap to preserve context
+✔ Keep chunks semantically meaningful
+✔ Store metadata with every chunk
+✔ Tune chunk size experimentally
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Mistakes
+
+❌ Very large chunks
+❌ No overlap
+❌ Ignoring metadata
+❌ Inconsistent chunk sizes
+
+---
+
+🌍 Real-World Applications
+
+✔ Enterprise search systems
+✔ PDF chatbots
+✔ Legal document assistants
+✔ Research tools
+
+---
+
+🧠 Interview Answer (Simple)
+
+> Metadata filtering improves retrieval relevance by filtering documents based on attributes like source or category, while text splitters divide large documents into smaller chunks for embedding and retrieval.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Metadata provides additional document information
+✔ Metadata filtering improves retrieval precision
+✔ Text splitters create manageable chunks
+✔ RecursiveCharacterTextSplitter is most commonly used
+✔ Both are essential for high-quality RAG systems
+
