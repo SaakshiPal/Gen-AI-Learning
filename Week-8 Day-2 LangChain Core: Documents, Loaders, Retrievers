@@ -1,0 +1,253 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 8 – Day 2 LangChain Core: Documents, Loaders & Retrievers 🔗📄🔍
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+LangChain is one of the most popular frameworks for building:
+
+✔ RAG systems
+✔ AI agents
+✔ Chatbots
+✔ LLM applications
+
+Core building blocks include:
+
+* Documents
+* Loaders
+* Retrievers
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📄 1. Documents
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is a Document?
+
+```text id="document_def"
+A structured object containing text content and metadata
+```
+
+---
+
+🧾 Structure of a Document
+
+A document usually contains:
+
+* `page_content`
+* `metadata`
+
+---
+
+💻 Example
+
+```python id="document_example"
+from langchain.schema import Document
+
+doc = Document(
+    page_content="Artificial Intelligence is transforming industries.",
+    metadata={"source": "ai_article.pdf"}
+)
+
+print(doc.page_content)
+print(doc.metadata)
+```
+
+---
+
+🎯 Why Documents Matter
+
+✔ Standardized format
+✔ Easy processing
+✔ Supports metadata filtering
+✔ Used throughout RAG pipelines
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 2. Document Loaders
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is a Loader?
+
+```text id="loader_def2"
+A component that reads data from files, websites, or databases
+```
+
+---
+
+🔹 Popular Loaders
+
+| Loader        | Purpose         |
+| ------------- | --------------- |
+| PyPDFLoader   | Load PDFs       |
+| CSVLoader     | Load CSV files  |
+| WebBaseLoader | Load web pages  |
+| TextLoader    | Load text files |
+
+---
+
+💻 Example: PDF Loader
+
+```python id="pdf_loader_example2"
+from langchain.document_loaders import PyPDFLoader
+
+loader = PyPDFLoader("report.pdf")
+documents = loader.load()
+
+print(documents[0].page_content)
+```
+
+---
+
+💻 Example: URL Loader
+
+```python id="url_loader_example2"
+from langchain.document_loaders import WebBaseLoader
+
+loader = WebBaseLoader("https://example.com")
+documents = loader.load()
+```
+
+---
+
+🔧 Benefits of Loaders
+
+✔ Handle multiple file types
+✔ Preserve metadata
+✔ Simplify ingestion pipelines
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔍 3. Retrievers
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is a Retriever?
+
+```text id="retriever_def2"
+A component that fetches the most relevant documents for a query
+```
+
+---
+
+🎯 Retriever Workflow
+
+```text id="retriever_flow"
+User Query → Query Embedding → Similarity Search → Relevant Documents
+```
+
+---
+
+🔹 Why Retrievers are Important
+
+✔ Improve answer relevance
+✔ Reduce hallucinations
+✔ Enable scalable search
+
+---
+
+💻 Example: Create Retriever
+
+```python id="retriever_example"
+retriever = vector_store.as_retriever(
+    search_kwargs={"k": 4}
+)
+```
+
+---
+
+📌 Query Example
+
+```python id="retriever_query"
+docs = retriever.get_relevant_documents(
+    "Explain machine learning"
+)
+
+print(docs[0].page_content)
+```
+
+---
+
+🔍 Types of Retrievers
+
+| Retriever                        | Purpose                    |
+| -------------------------------- | -------------------------- |
+| Similarity Retriever             | Basic semantic search      |
+| MMR Retriever                    | Diversity-aware retrieval  |
+| MultiQuery Retriever             | Multiple query variations  |
+| Contextual Compression Retriever | Compress retrieved content |
+
+---
+
+🧠 MMR Retriever
+
+MMR = Maximum Marginal Relevance
+
+Balances:
+
+✔ Relevance
+✔ Diversity
+
+---
+
+📘 Example
+
+Instead of retrieving very similar chunks:
+
+* Retrieve diverse but relevant chunks.
+
+---
+
+🔄 Complete LangChain Flow
+
+```text id="langchain_flow"
+Loader → Documents → Splitter → Embeddings → Vector Store → Retriever → LLM
+```
+
+---
+
+🚀 Real-World Applications
+
+✔ PDF Chatbots
+✔ Enterprise Search
+✔ Legal Document QA
+✔ Research Assistants
+✔ Customer Support Bots
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔧 Best Practices
+
+✔ Preserve metadata
+✔ Use recursive chunking
+✔ Tune retriever `k` value
+✔ Combine retrievers with reranking
+
+---
+
+⚠️ Common Mistakes
+
+❌ Large irrelevant chunks
+❌ No metadata
+❌ Poor retriever settings
+❌ Over-fetching documents
+
+---
+
+🧠 Interview Answer (Simple)
+
+> In LangChain, documents store text and metadata, loaders ingest data from different sources, and retrievers fetch the most relevant chunks for a user query in RAG systems.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Documents are structured text objects
+✔ Loaders ingest data from multiple sources
+✔ Retrievers find relevant chunks using embeddings
+✔ Core building blocks of RAG applications
+
