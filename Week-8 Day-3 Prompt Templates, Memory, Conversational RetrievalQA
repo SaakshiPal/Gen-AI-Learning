@@ -1,0 +1,277 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 8 – Day 3 Prompt Templates, Memory & Conversational RetrievalQA 🧠💬📚
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Modern AI chatbots are not just simple question-answer systems.
+
+They use:
+
+* Prompt Templates
+* Memory
+* Conversational RetrievalQA
+
+👉 These help build intelligent conversational RAG systems.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📝 1. Prompt Templates
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is a Prompt Template?
+
+```text id="prompt_template_def"
+A reusable structure for dynamically generating prompts
+```
+
+---
+
+🎯 Why Use Prompt Templates?
+
+✔ Reusable prompts
+✔ Dynamic inputs
+✔ Better consistency
+✔ Cleaner code
+
+---
+
+📌 Example Template
+
+```text id="template_example"
+You are an AI assistant.
+
+Context:
+{context}
+
+Question:
+{question}
+
+Answer:
+```
+
+---
+
+💻 LangChain Example
+
+```python id="prompt_template_code"
+from langchain.prompts import PromptTemplate
+
+template = """
+Answer the question using the context below.
+
+Context:
+{context}
+
+Question:
+{question}
+"""
+
+prompt = PromptTemplate(
+    template=template,
+    input_variables=["context", "question"]
+)
+```
+
+---
+
+🔧 Benefits
+
+✔ Standardized prompting
+✔ Easier maintenance
+✔ Better response formatting
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 2. Memory
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is Memory?
+
+```text id="memory_def"
+A mechanism that allows the chatbot to remember previous interactions
+```
+
+---
+
+📌 Without Memory
+
+User:
+
+```text id="without_memory"
+"My name is Alex"
+```
+
+Later:
+
+```text id="without_memory2"
+"What is my name?"
+```
+
+❌ Model may forget.
+
+---
+
+📌 With Memory
+
+✅ Model remembers previous conversation.
+
+---
+
+🔹 Types of Memory in LangChain
+
+| Memory Type                    | Purpose                     |
+| ------------------------------ | --------------------------- |
+| ConversationBufferMemory       | Stores full chat history    |
+| ConversationSummaryMemory      | Stores summarized history   |
+| ConversationBufferWindowMemory | Stores recent messages only |
+
+---
+
+💻 Example: Conversation Memory
+
+```python id="memory_example"
+from langchain.memory import ConversationBufferMemory
+
+memory = ConversationBufferMemory()
+
+memory.save_context(
+    {"input": "Hi"},
+    {"output": "Hello!"}
+)
+
+print(memory.load_memory_variables({}))
+```
+
+---
+
+🎯 Why Memory Matters
+
+✔ Personalized conversations
+✔ Multi-turn dialogue support
+✔ Better user experience
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💬 3. Conversational RetrievalQA
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is Conversational RetrievalQA?
+
+```text id="retrievalqa_def"
+A conversational RAG system that combines retrieval with chat memory
+```
+
+---
+
+🔄 Workflow
+
+```text id="retrievalqa_flow"
+User Question → Retriever → Relevant Chunks
+Previous Chat History + Context → LLM → Answer
+```
+
+---
+
+🔹 Why It’s Powerful
+
+Instead of treating every question independently:
+
+👉 The system remembers conversation context.
+
+---
+
+📌 Example Conversation
+
+User:
+
+```text id="conversation_ex1"
+"What is machine learning?"
+```
+
+Later:
+
+```text id="conversation_ex2"
+"What are its applications?"
+```
+
+👉 The model understands "its" refers to machine learning.
+
+---
+
+💻 Example: Conversational RetrievalQA
+
+```python id="retrievalqa_code"
+from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationBufferMemory
+
+memory = ConversationBufferMemory(
+    memory_key="chat_history",
+    return_messages=True
+)
+
+qa_chain = ConversationalRetrievalChain.from_llm(
+    llm=llm,
+    retriever=retriever,
+    memory=memory
+)
+```
+
+---
+
+⚔️ RetrievalQA vs Conversational RetrievalQA
+
+| Feature                  | RetrievalQA | Conversational RetrievalQA |
+| ------------------------ | ----------- | -------------------------- |
+| Chat History             | ❌ No        | ✅ Yes                      |
+| Context Awareness        | Low         | High                       |
+| Multi-turn Conversations | ❌ No        | ✅ Yes                      |
+
+---
+
+🚀 Real-World Applications
+
+✔ Customer support chatbots
+✔ AI tutors
+✔ Enterprise assistants
+✔ Research assistants
+✔ PDF chatbots
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔧 Best Practices
+
+✔ Use prompt templates for consistency
+✔ Limit memory size to reduce token cost
+✔ Combine memory with retrieval carefully
+✔ Store citations in responses
+
+---
+
+⚠️ Common Mistakes
+
+❌ Very long chat history
+❌ Poor prompt structure
+❌ No retrieval grounding
+❌ Memory overload
+
+---
+
+🧠 Interview Answer (Simple)
+
+> Prompt templates create reusable prompts, memory enables multi-turn conversations, and Conversational RetrievalQA combines retrieval with conversation history for context-aware chatbot responses.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Prompt templates standardize prompts
+✔ Memory enables conversational context
+✔ Conversational RetrievalQA combines memory + retrieval
+✔ Essential for building intelligent AI assistants
+
