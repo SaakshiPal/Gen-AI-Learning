@@ -1,0 +1,264 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 8 – Day 4 LangGraph Basics: Connectors & Formatters 🔗🧠
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+LangGraph is a framework built on top of LangChain for creating:
+
+✔ Stateful AI workflows
+✔ Multi-step reasoning systems
+✔ AI agents
+✔ Tool-calling pipelines
+
+Unlike simple chains, LangGraph allows:
+
+👉 Graph-based execution flow.
+
+---
+
+🔹 What is LangGraph?
+
+```text id="langgraph_def"
+A framework for building stateful and multi-step LLM applications using graph workflows
+```
+
+---
+
+🧠 Why LangGraph?
+
+Traditional chains are linear:
+
+```text id="linear_chain"
+Input → LLM → Output
+```
+
+LangGraph supports:
+
+```text id="graph_chain"
+Input → Multiple Nodes → Decisions → Tools → Memory → Output
+```
+
+---
+
+🏗️ Core Concepts
+
+* Nodes
+* Edges
+* State
+* Connectors
+* Formatters
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📍 1. Nodes
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is a Node?
+
+```text id="node_def"
+A processing step in the workflow
+```
+
+---
+
+📌 Examples
+
+* LLM call
+* Retriever
+* Tool execution
+* Memory update
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔗 2. Connectors
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What are Connectors?
+
+```text id="connector_def"
+Components that connect nodes and control data flow between them
+```
+
+---
+
+🧠 Purpose of Connectors
+
+✔ Pass outputs between nodes
+✔ Manage workflow transitions
+✔ Route execution paths
+
+---
+
+📌 Example Flow
+
+```text id="connector_flow"
+Retriever → Formatter → LLM → Final Response
+```
+
+---
+
+🔄 Conditional Routing
+
+LangGraph can dynamically choose next node.
+
+Example:
+
+```text id="conditional_flow"
+If query requires search → Retriever
+Else → Direct LLM response
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 3. Formatters
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What are Formatters?
+
+```text id="formatter_def"
+Components that structure or transform data before passing it to another node
+```
+
+---
+
+🎯 Why Formatters Matter
+
+✔ Standardize prompts
+✔ Clean retrieved text
+✔ Structure outputs
+✔ Improve readability
+
+---
+
+📌 Example
+
+Raw retrieved text:
+
+```text id="raw_text"
+policy.pdf page 3 leave policy employees...
+```
+
+Formatted version:
+
+```text id="formatted_text"
+Context:
+Employees are entitled to 20 paid leave days annually.
+```
+
+---
+
+💻 Simple LangGraph Example
+
+```python id="langgraph_example"
+from langgraph.graph import StateGraph
+
+workflow = StateGraph()
+
+workflow.add_node("retriever", retriever_function)
+workflow.add_node("generator", generator_function)
+
+workflow.add_edge("retriever", "generator")
+```
+
+---
+
+🔄 LangGraph Workflow Example
+
+```text id="langgraph_workflow"
+User Query
+    ↓
+Retriever Node
+    ↓
+Formatter Node
+    ↓
+LLM Generator
+    ↓
+Final Answer
+```
+
+---
+
+🧠 State Management
+
+LangGraph maintains state across nodes.
+
+Example state:
+
+```python id="state_example"
+{
+    "query": "What is RAG?",
+    "retrieved_docs": [...],
+    "chat_history": [...]
+}
+```
+
+---
+
+⚡ Advantages of LangGraph
+
+✔ Stateful workflows
+✔ Dynamic execution
+✔ Multi-agent systems
+✔ Better control over pipelines
+
+---
+
+🚀 Real-World Applications
+
+✔ AI agents
+✔ Multi-step RAG systems
+✔ Enterprise assistants
+✔ Autonomous workflows
+✔ Tool-calling chatbots
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚔️ LangChain vs LangGraph
+
+| Feature          | LangChain     | LangGraph       |
+| ---------------- | ------------- | --------------- |
+| Workflow Type    | Linear chains | Graph workflows |
+| State Management | Limited       | Strong          |
+| Dynamic Routing  | Basic         | Advanced        |
+| Agent Support    | Good          | Excellent       |
+
+---
+
+🔧 Best Practices
+
+✔ Keep nodes modular
+✔ Use formatters for clean prompts
+✔ Maintain lightweight state
+✔ Add fallback/error handling
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Mistakes
+
+❌ Complex graph design
+❌ Poor state management
+❌ Unstructured prompts
+❌ Too many unnecessary nodes
+
+---
+
+🧠 Interview Answer (Simple)
+
+> LangGraph is a framework for building stateful graph-based AI workflows. Connectors manage data flow between nodes, while formatters structure data before it is passed to LLMs or other components.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ LangGraph enables graph-based AI workflows
+✔ Connectors control execution flow
+✔ Formatters structure and clean data
+✔ Supports advanced RAG and AI agents
+✔ More flexible than traditional chains
+
