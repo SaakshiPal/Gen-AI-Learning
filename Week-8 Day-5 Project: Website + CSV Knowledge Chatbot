@@ -1,0 +1,257 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 8 – Day 5 Project: Website + CSV Knowledge Chatbot 🌐📊🤖
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Project Overview
+
+Build a chatbot that can answer questions using:
+
+* Website content
+* CSV data
+
+The chatbot uses a **RAG (Retrieval-Augmented Generation)** pipeline to retrieve relevant information before generating answers.
+
+---
+
+🎯 Project Goals
+
+✔ Build a multi-source RAG chatbot
+✔ Learn website scraping + CSV ingestion
+✔ Use embeddings and vector databases
+✔ Create a real-world AI assistant
+
+---
+
+🛠️ Tech Stack
+
+* Python
+* LangChain
+* Chroma
+* Streamlit
+* OpenAI API
+* BeautifulSoup / WebBaseLoader
+* Pandas
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🏗️ Project Architecture
+
+```text id="project_arch2"
+Website + CSV
+       ↓
+Document Loaders
+       ↓
+Chunking
+       ↓
+Embeddings
+       ↓
+Vector Store
+       ↓
+Retriever
+       ↓
+LLM
+       ↓
+Chatbot Response
+```
+
+---
+
+📂 Suggested Folder Structure
+
+```text id="folder_structure2"
+website-csv-chatbot/
+├── app.py
+├── requirements.txt
+├── data/
+│   ├── products.csv
+├── utils/
+│   ├── loaders.py
+│   ├── embeddings.py
+│   ├── vector_store.py
+│   └── rag_pipeline.py
+└── README.md
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Step 1: Install Dependencies
+
+```bash id="install_project_deps"
+pip install langchain chromadb streamlit pandas beautifulsoup4 openai
+```
+
+---
+
+🌐 Step 2: Load Website Content
+
+```python id="website_loader"
+from langchain.document_loaders import WebBaseLoader
+
+loader = WebBaseLoader("https://example.com")
+website_docs = loader.load()
+```
+
+---
+
+📊 Step 3: Load CSV Data
+
+```python id="csv_loader_project"
+from langchain.document_loaders import CSVLoader
+
+loader = CSVLoader("data/products.csv")
+csv_docs = loader.load()
+```
+
+---
+
+🔗 Step 4: Combine Documents
+
+```python id="combine_docs"
+documents = website_docs + csv_docs
+```
+
+---
+
+✂️ Step 5: Split Documents into Chunks
+
+```python id="split_docs"
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200
+)
+
+chunks = splitter.split_documents(documents)
+```
+
+---
+
+🔢 Step 6: Create Embeddings
+
+```python id="embedding_project"
+from langchain_openai import OpenAIEmbeddings
+
+embeddings = OpenAIEmbeddings()
+```
+
+---
+
+🗂️ Step 7: Store Embeddings in ChromaDB
+
+```python id="chroma_project"
+from langchain.vectorstores import Chroma
+
+vector_store = Chroma.from_documents(
+    documents=chunks,
+    embedding=embeddings
+)
+```
+
+---
+
+🔍 Step 8: Create Retriever
+
+```python id="retriever_project"
+retriever = vector_store.as_retriever(
+    search_kwargs={"k": 4}
+)
+```
+
+---
+
+🤖 Step 9: Create QA Chain
+
+```python id="qa_project"
+from langchain.chains import RetrievalQA
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI(model="gpt-4")
+
+qa_chain = RetrievalQA.from_chain_type(
+    llm=llm,
+    retriever=retriever
+)
+```
+
+---
+
+🌐 Step 10: Build Streamlit Interface
+
+```python id="streamlit_project"
+import streamlit as st
+
+st.title("🌐 Website + CSV Knowledge Chatbot")
+
+query = st.text_input("Ask a question")
+
+if query:
+    response = qa_chain.run(query)
+    st.write(response)
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Example Questions
+
+* "What products are available?"
+* "Summarize the company website."
+* "What is the pricing information?"
+* "Compare two products."
+
+---
+
+🚀 Advanced Features You Can Add
+
+🔥 Source citations
+🔥 Chat memory
+🔥 Multi-website support
+🔥 Authentication
+🔥 Hybrid search
+
+---
+
+🌍 Real-World Applications
+
+✔ E-commerce assistants
+✔ Enterprise knowledge bots
+✔ Customer support systems
+✔ Research assistants
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📈 Resume Description
+
+> Developed a RAG-based chatbot using LangChain, ChromaDB, and OpenAI APIs capable of answering questions from website content and CSV datasets through semantic retrieval and conversational AI.
+
+---
+
+🧠 Interview Questions You Should Know
+
+Q1. Why use RAG in this project?
+
+👉 To retrieve relevant information dynamically instead of relying only on model memory.
+
+---
+
+Q2. Why use embeddings?
+
+👉 To perform semantic similarity search.
+
+---
+
+Q3. Why chunk documents?
+
+👉 To improve retrieval quality and fit within token limits.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Combined website + CSV data into a single RAG pipeline
+✔ Used embeddings and vector search for retrieval
+✔ Built a real-world conversational AI system
+✔ Excellent project for AI/LLM portfolios
+
