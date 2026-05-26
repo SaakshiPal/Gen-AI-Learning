@@ -1,0 +1,298 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 8 – Day 6 RAG Evaluation: Precision, Recall, F1 & Ragas 📊🤖
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+Building a RAG system is not enough.
+
+👉 We must also evaluate:
+
+✔ Retrieval quality
+✔ Answer quality
+✔ Grounding accuracy
+✔ Hallucination rate
+
+RAG evaluation helps measure how well the system performs.
+
+---
+
+🎯 Why RAG Evaluation Matters
+
+Without evaluation:
+
+❌ Poor retrieval may go unnoticed
+❌ Hallucinations may increase
+❌ Wrong answers may appear correct
+
+---
+
+🔄 RAG Evaluation Pipeline
+
+```text id="evaluation_flow"
+User Query → Retrieval → Context → LLM Response → Evaluation Metrics
+```
+
+---
+
+📌 What Do We Evaluate?
+
+Two major components:
+
+| Component | What to Evaluate                |
+| --------- | ------------------------------- |
+| Retriever | Relevance of retrieved chunks   |
+| Generator | Correctness of generated answer |
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔍 1. Precision
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Definition
+
+```text id="precision_def"
+Measures how many retrieved documents are actually relevant
+```
+
+---
+
+📊 Formula
+
+```text id="precision_formula"
+Precision = Relevant Retrieved / Total Retrieved
+```
+
+---
+
+📌 Example
+
+Retriever returns 5 chunks:
+
+* 4 relevant
+* 1 irrelevant
+
+```text id="precision_example"
+Precision = 4 / 5 = 0.8
+```
+
+---
+
+🎯 High Precision Means
+
+✔ Less irrelevant information
+✔ Cleaner retrieval results
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔍 2. Recall
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Definition
+
+```text id="recall_def"
+Measures how many relevant documents were successfully retrieved
+```
+
+---
+
+📊 Formula
+
+```text id="recall_formula"
+Recall = Relevant Retrieved / Total Relevant Documents
+```
+
+---
+
+📌 Example
+
+There are 10 relevant chunks in database.
+
+Retriever finds 7.
+
+```text id="recall_example"
+Recall = 7 / 10 = 0.7
+```
+
+---
+
+🎯 High Recall Means
+
+✔ Important information is not missed
+✔ Better coverage
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚖️ 3. F1 Score
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Definition
+
+```text id="f1_def"
+Harmonic mean of Precision and Recall
+```
+
+---
+
+📊 Formula
+
+```text id="f1_formula"
+F1 = 2 × (Precision × Recall) / (Precision + Recall)
+```
+
+---
+
+🎯 Why F1 is Important
+
+Balances:
+
+✔ Precision
+✔ Recall
+
+Useful when both metrics matter equally.
+
+---
+
+📊 Precision vs Recall
+
+| Metric    | Focus                        |
+| --------- | ---------------------------- |
+| Precision | Quality of retrieved results |
+| Recall    | Coverage of relevant results |
+| F1 Score  | Balance between both         |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤖 4. Ragas Framework
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is Ragas?
+
+```text id="ragas_def"
+An evaluation framework specifically designed for RAG systems
+```
+
+---
+
+🔹 Why Use Ragas?
+
+✔ Automated RAG evaluation
+✔ Measures retrieval + generation quality
+✔ Easy integration with LangChain
+
+---
+
+📊 Metrics Supported by Ragas
+
+| Metric            | Purpose                        |
+| ----------------- | ------------------------------ |
+| Faithfulness      | Is answer grounded in context? |
+| Answer Relevancy  | Does answer match question?    |
+| Context Precision | Quality of retrieved chunks    |
+| Context Recall    | Coverage of retrieved chunks   |
+
+---
+
+💻 Installation
+
+```bash id="ragas_install"
+pip install ragas
+```
+
+---
+
+💻 Example Usage
+
+```python id="ragas_example"
+from ragas import evaluate
+
+results = evaluate(
+    dataset=dataset,
+    metrics=[
+        faithfulness,
+        answer_relevancy,
+        context_precision,
+        context_recall
+    ]
+)
+
+print(results)
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 Faithfulness Metric
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is Faithfulness?
+
+```text id="faithfulness_def"
+Measures whether the answer is supported by retrieved context
+```
+
+---
+
+📌 Example
+
+If model invents information:
+
+❌ Low faithfulness
+
+If answer is fully grounded:
+
+✅ High faithfulness
+
+---
+
+🚨 Hallucination Detection
+
+RAG evaluation helps detect hallucinations.
+
+Hallucination:
+
+```text id="hallucination_def"
+Generating information not supported by retrieved documents
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔧 Best Practices for RAG Evaluation
+
+✔ Evaluate both retrieval and generation
+✔ Use high-quality test queries
+✔ Monitor hallucination rate
+✔ Tune chunking and retriever settings
+
+---
+
+🌍 Real-World Applications
+
+✔ Enterprise search systems
+✔ Medical assistants
+✔ Legal AI systems
+✔ Customer support chatbots
+
+---
+
+🧠 Interview Answer (Simple)
+
+> Precision measures retrieval accuracy, recall measures retrieval coverage, and F1 balances both. Ragas is a framework used to evaluate RAG systems for retrieval quality, faithfulness, and answer relevance.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ RAG systems require evaluation
+✔ Precision measures relevance quality
+✔ Recall measures coverage
+✔ F1 balances precision and recall
+✔ Ragas is a specialized framework for RAG evaluation
+✔ Faithfulness is critical to reduce hallucinations
+
