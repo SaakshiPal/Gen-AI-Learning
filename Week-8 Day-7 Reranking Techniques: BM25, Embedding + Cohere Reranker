@@ -1,0 +1,310 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 8 – Day 7 Reranking Techniques: BM25, Embedding Search & Cohere Reranker 🔍🤖
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Introduction
+
+In RAG systems, retrieval quality directly affects answer quality.
+
+Sometimes the retriever returns:
+
+❌ Irrelevant chunks
+❌ Weak matches
+❌ Incorrect ranking order
+
+👉 To improve results, we use **Reranking Techniques**.
+
+---
+
+🔹 What is Reranking?
+
+```text id="reranking_def"
+Reordering retrieved documents based on deeper relevance analysis
+```
+
+---
+
+🔄 RAG Retrieval Flow
+
+```text id="rerank_flow"
+User Query → Initial Retrieval → Reranking → Top Relevant Chunks → LLM
+```
+
+---
+
+🎯 Why Reranking is Important
+
+✔ Improves retrieval accuracy
+✔ Reduces hallucinations
+✔ Improves answer grounding
+✔ Enhances user experience
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 1. BM25 (Best Matching 25)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is BM25?
+
+```text id="bm25_def"
+A traditional keyword-based ranking algorithm used in search engines
+```
+
+---
+
+🧠 How BM25 Works
+
+BM25 ranks documents using:
+
+* Keyword frequency
+* Document length
+* Query term importance
+
+---
+
+📌 Example
+
+Query:
+
+```text id="bm25_query"
+"machine learning basics"
+```
+
+Documents containing these exact keywords rank higher.
+
+---
+
+✅ Advantages
+
+✔ Fast
+✔ Good for exact keyword matching
+✔ No embeddings required
+
+---
+
+⚠️ Limitations
+
+❌ Cannot understand semantic meaning
+❌ Poor with synonyms
+
+---
+
+📊 BM25 vs Semantic Search
+
+| Query                             | BM25      | Embedding Search |
+| --------------------------------- | --------- | ---------------- |
+| "AI" vs "Artificial Intelligence" | Weak      | Strong           |
+| Exact keyword match               | Excellent | Good             |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔢 2. Embedding-Based Retrieval
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is Embedding Search?
+
+```text id="embedding_search_def"
+Semantic search using vector embeddings
+```
+
+---
+
+🧠 How It Works
+
+1️⃣ Convert query into embedding
+2️⃣ Compare with document embeddings
+3️⃣ Retrieve semantically similar chunks
+
+---
+
+📌 Example
+
+Query:
+
+```text id="embedding_query"
+"What is AI?"
+```
+
+Can match:
+
+* "Artificial Intelligence overview"
+* "Basics of intelligent systems"
+
+Even without exact keywords.
+
+---
+
+✅ Advantages
+
+✔ Semantic understanding
+✔ Better contextual retrieval
+✔ Handles synonyms well
+
+---
+
+⚠️ Limitations
+
+❌ Can retrieve semantically similar but irrelevant chunks
+❌ Higher computational cost
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 3. Cohere Reranker
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 What is a Reranker?
+
+```text id="reranker_def2"
+A model that scores retrieved documents for relevance
+```
+
+---
+
+🔹 Cohere Reranker
+
+Cohere provides specialized reranking models.
+
+---
+
+🧠 Workflow
+
+```text id="cohere_flow"
+Retriever → Candidate Documents → Cohere Reranker → Best Ranked Results
+```
+
+---
+
+💻 Example
+
+```python id="cohere_rerank"
+import cohere
+
+co = cohere.Client("YOUR_API_KEY")
+
+results = co.rerank(
+    query="What is machine learning?",
+    documents=[
+        "AI basics",
+        "Cooking recipes",
+        "Machine learning introduction"
+    ],
+    top_n=2
+)
+
+print(results)
+```
+
+---
+
+🎯 Why Rerankers are Powerful
+
+Unlike simple similarity search:
+
+👉 Rerankers deeply analyze query-document relevance.
+
+---
+
+⚔️ BM25 vs Embeddings vs Reranker
+
+| Feature                | BM25      | Embeddings | Reranker  |
+| ---------------------- | --------- | ---------- | --------- |
+| Keyword Match          | Excellent | Medium     | High      |
+| Semantic Understanding | Low       | High       | Very High |
+| Speed                  | Fast      | Medium     | Slower    |
+| Accuracy               | Medium    | High       | Very High |
+
+---
+
+🔥 Hybrid Search
+
+Modern RAG systems often combine:
+
+```text id="hybrid_search"
+BM25 + Embedding Search + Reranking
+```
+
+---
+
+🧠 Why Hybrid Search Works Best
+
+BM25 handles:
+
+✔ Exact keywords
+
+Embeddings handle:
+
+✔ Semantic similarity
+
+Rerankers improve:
+
+✔ Final ranking quality
+
+---
+
+🏗️ Production Retrieval Pipeline
+
+```text id="production_pipeline"
+User Query
+    ↓
+BM25 Retrieval
+    ↓
+Embedding Retrieval
+    ↓
+Merge Results
+    ↓
+Cohere Reranker
+    ↓
+Top-k Chunks
+    ↓
+LLM
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Real-World Applications
+
+✔ Enterprise search
+✔ Legal document retrieval
+✔ Medical assistants
+✔ AI customer support
+✔ Research systems
+
+---
+
+🔧 Best Practices
+
+✔ Use hybrid retrieval
+✔ Limit retrieved chunk count
+✔ Add reranking for production systems
+✔ Evaluate retrieval quality regularly
+
+---
+
+⚠️ Common Mistakes
+
+❌ Relying only on BM25
+❌ Large noisy chunks
+❌ No reranking layer
+❌ Poor chunking strategy
+
+---
+
+🧠 Interview Answer (Simple)
+
+> BM25 is a keyword-based retrieval algorithm, embedding search enables semantic retrieval using vector similarity, and rerankers like Cohere improve final document ranking for better RAG performance.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Reranking improves retrieval quality
+✔ BM25 is keyword-based retrieval
+✔ Embedding search enables semantic retrieval
+✔ Cohere Reranker improves ranking accuracy
+✔ Hybrid search is commonly used in production RAG systems
+
