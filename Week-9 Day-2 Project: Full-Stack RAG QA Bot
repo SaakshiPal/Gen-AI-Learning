@@ -1,0 +1,342 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Week 9 – Day 2 Project: Full-Stack RAG Question Answering Bot 🤖📚
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Project Overview
+
+Build a **Full-Stack RAG (Retrieval-Augmented Generation) QA Bot** that can answer questions from uploaded documents using:
+
+✔ LLMs
+✔ Embeddings
+✔ Vector Databases
+✔ Retrieval Systems
+✔ Modern Frontend UI
+
+This project combines everything learned so far:
+
+* RAG Architecture
+* Embeddings
+* Vector Databases
+* LangChain
+* Prompt Engineering
+* LLM APIs
+* Gradio/Streamlit
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Project Objectives
+
+✔ Build an end-to-end RAG application
+
+✔ Retrieve information from documents
+
+✔ Generate grounded answers
+
+✔ Reduce hallucinations
+
+✔ Create a portfolio-ready AI project
+
+---
+
+🏗️ System Architecture
+
+```text
+User Question
+      ↓
+Frontend UI
+      ↓
+Backend API
+      ↓
+Retriever
+      ↓
+Vector Database
+      ↓
+Relevant Chunks
+      ↓
+LLM
+      ↓
+Generated Answer
+      ↓
+Frontend Display
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🛠️ Tech Stack
+
+Frontend
+
+* Gradio
+  OR
+* Streamlit
+
+Backend
+
+* Python
+* FastAPI
+
+RAG Layer
+
+* LangChain
+
+Embeddings
+
+* OpenAI Embeddings
+* Hugging Face Embeddings
+
+Vector Store
+
+* Chroma
+* FAISS
+
+LLM
+
+* GPT
+* Gemini
+* Open-source LLMs
+
+---
+
+📂 Suggested Folder Structure
+
+```text
+fullstack-rag-bot/
+│
+├── frontend/
+│   ├── app.py
+│
+├── backend/
+│   ├── api.py
+│
+├── rag/
+│   ├── loader.py
+│   ├── splitter.py
+│   ├── embeddings.py
+│   ├── retriever.py
+│   └── qa_chain.py
+│
+├── data/
+│
+├── requirements.txt
+│
+└── README.md
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Step 1: Install Dependencies
+
+```bash
+pip install langchain chromadb fastapi uvicorn streamlit openai pypdf
+```
+
+---
+
+📄 Step 2: Load Documents
+
+```python
+from langchain.document_loaders import PyPDFLoader
+
+loader = PyPDFLoader("document.pdf")
+
+documents = loader.load()
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✂️ Step 3: Chunk Documents
+
+```python
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200
+)
+
+chunks = splitter.split_documents(documents)
+```
+
+---
+
+🔢 Step 4: Generate Embeddings
+
+```python
+from langchain_openai import OpenAIEmbeddings
+
+embeddings = OpenAIEmbeddings()
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🗂️ Step 5: Create Vector Store
+
+```python
+from langchain.vectorstores import Chroma
+
+db = Chroma.from_documents(
+    chunks,
+    embeddings
+)
+```
+
+---
+
+🔍 Step 6: Create Retriever
+
+```python
+retriever = db.as_retriever(
+    search_kwargs={"k": 4}
+)
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🤖 Step 7: Build QA Chain
+
+```python
+from langchain.chains import RetrievalQA
+
+qa = RetrievalQA.from_chain_type(
+    llm=llm,
+    retriever=retriever
+)
+```
+
+---
+
+🌐 Step 8: Create FastAPI Backend
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/ask")
+def ask(query: str):
+    return {"answer": qa.run(query)}
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎨 Step 9: Build Frontend
+
+Streamlit Example
+
+```python
+import streamlit as st
+
+st.title("📚 RAG QA Bot")
+
+question = st.text_input("Ask a question")
+
+if question:
+    answer = qa.run(question)
+    st.write(answer)
+```
+
+---
+
+💬 Sample Questions
+
+```text
+Summarize the document.
+
+What are the key findings?
+
+Explain the leave policy.
+
+Compare chapter 1 and chapter 2.
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Advanced Features
+
+Add Chat Memory
+
+```text
+User History
+↓
+Conversation Context
+↓
+Better Responses
+```
+
+---
+
+Add Citations
+
+```text
+Answer + Source Document
+```
+
+---
+
+Add Multi-PDF Support
+
+```text
+PDF 1
+PDF 2
+PDF 3
+↓
+Single Knowledge Base
+```
+
+---
+
+Add Hybrid Search
+
+```text
+BM25 + Embeddings + Reranking
+```
+
+---
+
+🌍 Real-World Applications
+
+✔ Enterprise Knowledge Assistant
+✔ Legal Document QA
+✔ HR Policy Chatbot
+✔ Research Assistant
+✔ Customer Support AI
+
+---
+
+📈 Resume Description
+
+> Developed a Full-Stack RAG Question Answering Bot using LangChain, ChromaDB, OpenAI Embeddings, FastAPI, and Streamlit. Implemented document ingestion, semantic retrieval, and grounded response generation with support for multi-document querying.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Interview Questions
+
+Q1. Why use RAG?
+👉 To provide up-to-date and document-grounded answers.
+---
+
+Q2. Why use embeddings?
+👉 To perform semantic similarity search.
+
+---
+
+Q3. Why use vector databases?
+👉 To efficiently retrieve relevant document chunks.
+
+---
+
+Q4. How does RAG reduce hallucinations?
+👉 Answers are generated using retrieved context instead of relying only on model memory.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 Key Takeaways
+
+✔ Complete end-to-end AI application
+✔ Combines frontend + backend + RAG
+✔ Uses retrieval to improve accuracy
+✔ Excellent project for AI/ML/LLM roles
+✔ Demonstrates real-world production concepts
+
